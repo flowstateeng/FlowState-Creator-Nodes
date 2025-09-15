@@ -1,7 +1,7 @@
 # Project: FlowState Node Mappings
 # Description: Node mappings for ComfyUI registry.
 # Author: Johnathan Chivington
-# Contact: johnathan@flowstateengineering.com | youtube.com/@flowstateeng
+# Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
 
 
 ##
@@ -13,38 +13,27 @@ from .FS_Nodes import *
 ##
 # SYSTEM STATUS
 ##
-print(f'  - Loading node name mappings...')
+print(f'  3. 💾 Loading node name mappings...')
 
 
 ##
 # MAPPINGS
 ##
 NODE_CLASS_MAPPINGS = {
-    'FlowStateUnifiedVideoSampler': FlowStateUnifiedVideoSampler,
-    'FlowStateUnifiedSampler': FlowStateUnifiedSampler,
-    'FlowStateUnifiedModelLoader': FlowStateUnifiedModelLoader,
-    'FlowStateUnifiedPrompt': FlowStateUnifiedPrompt,
-    'FlowStatePromptOutput': FlowStatePromptOutput,
-    'FlowStateLatentChooser': FlowStateLatentChooser,
-    'FlowStateUnifiedStyler': FlowStateUnifiedStyler
+    'FlowState_LatentSelector': FlowState_LatentSelector,
+    # 'FlowState_FluxSampler': FlowState_FluxSampler,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    'FlowStateUnifiedVideoSampler': 'FlowState Unified Video Sampler',
-    'FlowStateUnifiedSampler': 'FlowState Unified Sampler',
-    'FlowStateUnifiedModelLoader': 'FlowState Unified Model Loader',
-    'FlowStateUnifiedPrompt': 'FlowState Unified Prompt',
-    'FlowStatePromptOutput': 'FlowState Prompt Output',
-    'FlowStateLatentChooser': 'FlowState Latent Chooser',
-    'FlowStateUnifiedStyler': 'FlowState Unified Styler'
+    'FlowState_LatentSelector': '🌊 FlowState Latent Selector',
+    # 'FlowState_FluxSampler': '🌊 FlowState Flux Sampler',
 }
 
 
 ##
 # SYSTEM STATUS
 ##
-print(f'  - Mappings Loaded. Available nodes:')
-
 for fs_node in NODE_CLASS_MAPPINGS:
-    print(f'    - {fs_node}: {NODE_CLASS_MAPPINGS[fs_node]}')
+    print(f'\t - ✅ {fs_node}: {NODE_DISPLAY_NAME_MAPPINGS[fs_node]}')
 
+print(f'\t - ✅ Mappings Loaded.')

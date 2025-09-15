@@ -1,29 +1,24 @@
-# Project: FlowState Nodes
+# Project: FlowState Creator Nodes
 # Description: A collection of custom nodes to solve problems I couldn't find existing nodes for.
 # Author: Johnathan Chivington
-# Contact: johnathan@flowstateengineering.com | youtube.com/@flowstateeng
+# Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
 
 
 
 ##
 # SYSTEM STATUS
 ##
-print(f'  - Loading custom nodes...')
+print(f'  2. 💾 Loading custom nodes...')
 
 
 ##
 # NODES
 ##
-from .FlowStateUnifiedVideoSampler import *
-from .FlowStateUnifiedSampler import *
-from .FlowStateUnifiedPrompt import *
-from .FlowStateUnifiedModelLoader import *
-from .FlowStateLatentChooser import *
-from .FlowStateUnifiedStyler import *
+from .FlowState_LatentSelector import *
 
 
 ##
 # SYSTEM STATUS
 ##
-print(f'  - Nodes Loaded.')
+print(f'\t - ✅ All nodes Loaded.')
 

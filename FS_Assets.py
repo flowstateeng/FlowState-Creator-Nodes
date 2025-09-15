@@ -1,7 +1,7 @@
 # Project: FlowState Assets
 # Description: Paths to assets needed by nodes.
 # Author: Johnathan Chivington
-# Contact: johnathan@flowstateengineering.com | youtube.com/@flowstateeng
+# Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
 
 
 ##
@@ -15,6 +15,7 @@ from .FS_Utils import *
 # OUTSIDE IMPORTS
 ##
 import os
+import comfy
 import folder_paths
 
 
@@ -25,28 +26,19 @@ WEB_DIRECTORY = './web'
 FONT_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fonts/ShareTechMono-Regular.ttf')
 
 
-UNET_LIST_PATH = None
-try:
-    UNET_LIST_PATH = folder_paths.get_filename_list('diffusion_models')
-    UNET_LIST_PATH = lambda: folder_paths.get_filename_list('diffusion_models')
-except ImportError:
-    UNET_LIST_PATH = None
+DIFFUSION_MODELS_LIST = lambda: folder_paths.get_filename_list('unet') + folder_paths.get_filename_list('diffusion_models')
+CHECKPOINTS_LIST = lambda: folder_paths.get_filename_list('checkpoints')
+CLIPS_LIST = lambda: folder_paths.get_filename_list('clip')
+VAES_LIST = lambda: get_vae_list()
 
-if UNET_LIST_PATH == None:
-    try:
-        UNET_LIST_PATH = folder_paths.get_filename_list('unet')
-        UNET_LIST_PATH = lambda: folder_paths.get_filename_list('unet')
-    except ImportError:
-        UNET_LIST_PATH = None
+CONTROL_NETS_LIST = lambda: folder_paths.get_filename_list('controlnet')
+LORAS_LIST = lambda: folder_paths.get_filename_list('loras')
 
-print(f'    - Setting UNET_LIST_PATH to: {UNET_LIST_PATH}')
+SAMPLERS_LIST = lambda: comfy.samplers.KSampler.SAMPLERS
+SCHEDULERS_LIST = lambda: comfy.samplers.KSampler.SCHEDULERS
 
+ALL_MODELS_LIST = lambda: DIFFUSION_MODELS_LIST() + CHECKPOINTS_LIST()
 
-NF4_LIST_PATH = lambda: folder_paths.get_filename_list('checkpoints')
-CKPT_LIST_PATH = lambda: folder_paths.get_filename_list('checkpoints')
-CLIP_LIST_PATH = lambda: folder_paths.get_filename_list('clip')
-VAE_LIST_PATH = lambda: get_vae_list()
-CONTROL_NET_LIST_PATH = lambda: folder_paths.get_filename_list('controlnet')
-LORA_LIST_PATH = lambda: folder_paths.get_filename_list('loras')
-ALL_MODEL_LIST_PATHS = lambda: UNET_LIST_PATH() + CKPT_LIST_PATH()
+INPUT_FILES = lambda: get_input_files()
+OUTPUT_FILES = lambda: get_output_files()
 

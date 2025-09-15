@@ -1,7 +1,7 @@
 # Project: FlowState Utilities
 # Description: Global utilities for all nodes.
 # Author: Johnathan Chivington
-# Contact: johnathan@flowstateengineering.com | youtube.com/@flowstateeng
+# Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
 
 
 ##
@@ -11,13 +11,29 @@ import os, sys, time
 import folder_paths
 
 
+# INFO
 def get_mins_and_secs(start_time):
-    loading_duration = time.time() - start_time
-    loading_mins = int(loading_duration // 60)
-    loading_secs = int(loading_duration - loading_mins * 60)
-    return loading_duration, loading_mins, loading_secs
+    duration = time.time() - start_time
+    mins = int(duration // 60)
+    secs = int(duration - mins * 60)
+    return duration, mins, secs
 
 
+# I/O
+def get_input_files():
+    input_dir = folder_paths.get_input_directory()
+    files = [f for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f))]
+    files = folder_paths.filter_files_content_types(files, ["image"])
+    return files
+
+def get_output_files():
+    output_dir = folder_paths.get_output_directory()
+    files = [f for f in os.listdir(output_dir) if os.path.isfile(os.path.join(output_dir, f))]
+    files = folder_paths.filter_files_content_types(files, ["image"])
+    return files
+
+
+# MODELS
 def get_vae_list():
         vaes = folder_paths.get_filename_list('vae')
         approx_vaes = folder_paths.get_filename_list('vae_approx')

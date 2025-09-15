@@ -1,15 +1,35 @@
 <p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FlowState-Custom-Nodes-Banner.png' alt='MNIST Digits'/>
+  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState-Creator-Nodes-Banner.png' alt='FlowState Creator Nodes Banner Image'/>
 </p>
 
-# FlowState Custom Nodes
-The ultimate set of ComfyUI custom nodes to streamline your workflows. Happy Halloween! 🎃👻🕸️
+# 🌊 FlowState Creator Nodes
+Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are for creators who want to move beyond experimentation and into scalable production. Stop spending hours building and tweaking complex graphs for repeatable tasks. The FlowState Creator Nodes are purpose-built to deliver consistent, professional-grade results for common creative needs, allowing you to focus on your vision, not the wiring.
 
-Email info@flowstateengineering.com with questions.
+---
+
+## 🚀 Key Features
+
+* **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
+* **Production Ready:** Engineered for stability, efficiency & simplicity to handle large-scale generation jobs with ease.
+* **Focus on Quality & Control:** Provides the necessary inputs and outputs for fine-tuning professional assets without unnecessary clutter.
+* **Scalable by Nature:** Designed for batch processing and automation, turning one-off creations into scalable pipelines.
+
+## 🎯 What You Can Build
+
+This suite provides streamlined solutions for generating:
+
+* 🖼️ **YouTube Thumbnails**
+* 🎨 **Logos & Brand Assets**
+* 🌐 **Website & Social Media Banners**
+* 📢 **Promotional & Ad Copy Visuals**
+* 📦 **Product Mockups**
+* 🎬 **Demo & Explainer Videos**
+* 🎵 **Music Video Sequences**
+* ...and much more.
 <br/><br/>
 
 
-# Sponsorship
+# 💸 Sponsorship
 <div align="center">
 
 ** [:heart: Github Sponsor](https://github.com/sponsors/flowstateeng) | [:coin: Ca$hApp](cash.app/$FlowStateEngineering) | [:dollar: Venmo](account.venmo.com/u/flowstateeng) | [:goat: Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN) **
@@ -18,14 +38,9 @@ Email info@flowstateengineering.com with questions.
 
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
 
-- [FlowState Unified Styler](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateUnifiedStyler.py)
-- [FlowState Unified Sampler](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateUnifiedSampler.py)
-- [FlowState Unified Model Loader](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateUnifiedModelLoader.py)
-- [FlowState Unified Prompt & Prompt Output](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateUnifiedMPrompt.py)
-- [FlowState Latent Chooser](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateLatentChooser.py)
-- [FlowState Unified Video Sampler](https://github.com/flowstateeng/FlowState-Nodes/blob/main/FlowStateUnifiedVideoSampler.py)
+- [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
 
-Video tutorials can be found on YouTube at [FlowState YouTube Channel](https://www.youtube.com/@flowstateeng)
+Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/@flowstateeng)
 
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
@@ -33,112 +48,77 @@ Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng)
 <br/><br/>
 
 
-## Status
+## 📊 Status
 ![Build Status](https://img.shields.io/badge/build-Experimental-yellow.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 <br/><br/>
 
 
-## Installation
-[Video Demo](https://youtu.be/5wAHg8OvgbM?si=Uhl5oNx51d1y7XWQ) in my [ComfyUI Playlist](https://youtube.com/playlist?list=PLopF-DMGUFkQqh_FXP03qES4Lq-wY34kO&si=u4ltujwGIX-sZLYG)
+## 💾 Installation
 
-Paste this link into your ComfyUI Manager > Install via Git URL: https://github.com/flowstateeng/FlowState-Nodes.git
+# Method 1.
+1. Open the ComfyUI Manager
+2. Select "Install via Git URL"
+3. Paste this link: https://github.com/flowstateeng/FlowState-Creator-Nodes.git
+4. Click "Confirm"
 
-OR
-
-In your ComfyUI custom nodes folder...
+# Method 2.
+1. Open a terminal or command prompt and navigate to your Custom Nodes folder.
 ```bash
-git clone https://github.com/flowstateeng/FlowState-Nodes.git
+cd /path/to/your/ComfyUI/custom_nodes
+```
+2. Use Git to clone this repository.
+```bash
+git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
 
-OR
+# Method 3 (Coming Soong)
+1. Open the ComfyUI Manager
+2. Click "Custom Nodes Manager"
+3. In the searchbar, search "FlowState"
+4. Click "Install"
 
-COMING SOON: Install through the ComfyUI Custom Node Manager!
+
+* After any of these methods, restart ComfyUI.
 <br/><br/>
 
 
-# 1.1.2 RELEASE (LATEST) 10/29/24 - 1:30 pm (GMT-5) #
+# 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
-## Updates
-* Introduction of orientation selector
-* Fixed "unload_loras" bug
-* Converted static model directories to dynamic, so no restart required when downloading new models or changing filenames
-* Fixed issue with custom resolution inputs
+## 📋 Notes
+* Introduction of FlowState Latent Selector
 
-
-# 1.1.0 RELEASE 10/27/24 - 3:00 pm (GMT-5) #
-
-## Updates
-* Video Sampler node is available but still experimental
-* Styler node has LoRAs integrated, chain up to 3
-* Resolution selection on the Latent Chooser
-* Condensed model name fields on Model Loader
-* Support for Flux Lite; select model_type = UNET
-* CLIP Attention fields on Prompt node condensed to single preset drop down
-* Minor bug fixes for wider compatibility
-
-## Coming Soon (estimates given from time of latest push)
-* Model Persistence (~1.5 days)
-* Control Net support! (~1-3 days)
-* Video Sampler Tuning & Presets (~2-5 days)
-* Custom message instructions and presets for LLM prompt models, including for negative prompts (~3-7 days)
-* Inpainting/Outpainting (~5-9 days)
-* Image Composer (~7-13 days)
-* ComfyUI Custom Node Manager Installation (under review now)
+## 📆 Upcoming
+* Introduction of FlowState Flux Sampler
 <br/><br/>
 
 
-# Current Nodes
-## FlowState Unified Styler
-The FlowState Unified Styler brings together the powerful capabilities of LoRAs & Control Nets, unifying them in a single, efficient node. Now you can streamline style transfers, adaptive conditioning, and custom fine-tuning with ease, all while reducing workflow complexity. Perfect for creators who want versatility and control without the clutter!
+# 🗂️ Current Nodes
+## FlowState Latent Selector
+Simplify your latent options and clean up your workflow with FlowState Latent Selector.
 
-**Control Nets Coming ~10/28
+A simple switch to select between:
+ - an empty latent
+ - input image as a latent
+ - uploaded image as a latent
+ 
+Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
 <p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Unified-Styler.png' alt='FS Unified Styler Image'/>
-</p><br/><br/>
-
-## FlowState Unified Sampler
-Use this powerful sampler with your Flux AND Stable Diffusion models. Includes support for testing a variety of parameters in your batches. Add parameters and/or prompts to your output images for easy identification. Adjust font size and number of lines to include exactly the text you want. Control your terminal/CMD prompt output. Includes Latent Multiply and VAE Decode functionality, so no need for extra nodes in your workflow.
-<p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Unified-Sampler.png' alt='FS Unified Sampler Image'/>
-</p>
-
-### Sampler Example Output
-<p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Unified-Sampler-Output.png' alt='FS Unified Sampler Image 2'/>
+  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FS-Latent-Selector.png' alt='FS Latent Selector Image'/>
 </p><br/><br/>
 
 
-## FlowState Unified Prompt & Prompt Output
-Tighten up your workflow with the FlowState Unified Prompt & Prompt Output nodes. Load a .gguf model to generate sophisticated image prompts, or simply flip a switch to use your own. Handles the text encoding for you internally, so you don't need another Text Encode node off to the side. Outputs the original and generated text and conditioning, in case you want to pass it to another node. Also includes the Clip Attention Multiply functionality, thus eliminating another node from your workflow.
-<p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Unified-Prompt.png' alt='FS Unified-Prompt Image'/>
-</p><br/><br/>
-
-## FlowState Unified Model Loader
-Simplify your model loading with the FlowState Unified Model Loader. Load your UNET and Checkpoint models in a single node. Including support for Flux NF4! (Flux .gguf support coming soon!) Includes global seed you can use for your entire workflow. No need to have three separate nodes for Stable Diffusion, Flux Dev/Schnell and Flux NF4. Do it all in a single node!
-<p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Unified-Model-Loader.png' alt='FS Unified Model Loader Image'/>
-</p><br/><br/>
-
-## FlowState Latent Chooser
-Expand your latent options and clean up your workflow with FlowState Latent Chooser. Easily select between an empty latent, input image as a latent, and imported image as a latent with a simple switch. Vary the denoise on your sampler to control the amount of style transfer you want from your image latent in your generated images.
-<p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Nodes/blob/main/imgs/FS-Latent-Chooser.png' alt='FS Latent Chooser Image'/>
-</p><br/><br/>
-
-
-## Authors
+## ✒️ Author
 **Johnathan Chivington:**
-* [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://youtube.com/@flowstateeng), [Discord](https://discord.gg/KgxgXBjMX6), [X](https://x.com/FlowStateEng), [GitHub](https://github.com/flowstateeng)
+* [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
 
-## Issues
-* PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS WILL BE DELETED.
+## 🐞 Issues
+* PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
 
-## Contributing
-Not currently accepting outside contributors, but feel free to use as you wish.
+## 🤝 Contributing
+Not currently accepting outside contributors.
 <br/><br/>
 
-## License
-There is no license associated with this content.
+## 📄 License
+MIT
 <br/><br/>
