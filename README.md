@@ -34,7 +34,7 @@ This suite provides streamlined solutions for generating:
 
 </div>
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
-
+</br>
 
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
