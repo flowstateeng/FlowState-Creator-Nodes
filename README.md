@@ -7,6 +7,10 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 
 ---
 
+## 📊 Status
+![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 ## 🚀 Key Features
 * **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
 * **Production Ready:** Engineered for stability, efficiency & simplicity to handle large-scale generation jobs with ease.
@@ -40,13 +44,6 @@ Everything is open and free, but if you like my work and wish to see updates and
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
 Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
-
-
----
-
-## 📊 Status
-![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ---
 
