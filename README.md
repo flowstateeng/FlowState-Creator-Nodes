@@ -70,7 +70,7 @@ cd /path/to/your/ComfyUI/custom_nodes
 git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
 
-### Method 3 (Coming Soon)
+### Method 3
 1. Open the ComfyUI Manager
 2. Click "Custom Nodes Manager"
 3. In the searchbar, search "FlowState"
