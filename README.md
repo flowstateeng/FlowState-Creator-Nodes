@@ -1,9 +1,9 @@
 <p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState-Creator-Nodes-Banner.png' alt='FlowState Creator Nodes Banner Image'/>
+  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState-Creator-Nodes-Banner.png' alt='FlowState Creator Suite Banner Image'/>
 </p>
 
-# 🌊 FlowState Creator Nodes
-Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are for creators who want to move beyond experimentation and into scalable production. Stop spending hours building and tweaking complex graphs for repeatable tasks. The FlowState Creator Nodes are purpose-built to deliver consistent, professional-grade results for common creative needs, allowing you to focus on your vision, not the wiring.
+# 🌊 FlowState Creator Suite
+Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are for creators who want to move beyond experimentation and into scalable production. Stop spending hours building and tweaking complex graphs for repeatable tasks. The FlowState Creator Suite are purpose-built to deliver consistent, professional-grade results for common creative needs, allowing you to focus on your vision, not the wiring.
 
 ---
 
@@ -57,10 +57,10 @@ I preesh-y8-cha! 🤗🙌🥰
 ### Method 1.
 1. Open the ComfyUI Manager
 2. Click "Custom Nodes Manager"
-3. In the searchbar, search "FlowState Creator Nodes"
-4. Click "Install" next to "🌊 FlowState Creator Nodes"
+3. In the searchbar, search "FlowState Creator Suite"
+4. Click "Install" next to "🌊 FlowState Creator Suite"
 
-*🚨 DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Nodes' (WITH THE WAVE)*
+*🚨 DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Suite' (WITH THE WAVE)*
 
 ### Method 2.
 1. Open the ComfyUI Manager
@@ -110,7 +110,7 @@ Vary the denoise on your sampler to control the amount of style transfer you wan
 </p>
 <br/>
 
-Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
+Video tutorials can be found on YouTube at [FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
 
 ---
 
