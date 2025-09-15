@@ -84,7 +84,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ## 🎉 RELEASE v0.0.1 ● 09/14/25 - 5:30 pm (GMT-5)
 
 ### 📋 Notes
-* Introduction of FlowState Latent Selector
+* Introduction of FlowState Latent Source
 
 ### 📆 Upcoming
 * Introduction of FlowState Flux Engine: a Flux all-in-one.
@@ -94,8 +94,8 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ---
 
 ## 🖧 Current Nodes
-### FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
-Simplify your latent options and clean up your workflow with FlowState Latent Selector.
+### FlowState Latent Source [FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource_.py)
+Simplify your latent options and clean up your workflow with FlowState Latent Source.
 
 A simple switch to select between:
  - an empty latent
@@ -104,7 +104,7 @@ A simple switch to select between:
  
 Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
 <p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FS-Latent-Selector.png' alt='FS Latent Selector Image'/>
+  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState-Latent-Source.png' alt='FS Latent Source Image'/>
 </p>
 <br/>
 

@@ -131,20 +131,20 @@ TYPE_IMAGE = ('IMAGE', )
 # FLOWSTATE CREATOR TYPES
 ##
 
-# LATENT SELECTOR
+# LATENT SOURCE
 TYPE_LATENT_BATCH_SIZE = ('INT', {'default': 1, 'min': 1, 'max': 4096, 'tooltip': (
         f'Custom Batch Size\n'
         f'-----------------\n'
         f' - The number of images you want to generate.\n\n'
     )})
-TYPE_LATENT_SELECTOR_INPUT_TYPE = (['Empty Latent', 'Input Image', 'Uploaded Image'], {
+TYPE_LATENT_SOURCE_INPUT_TYPE = (['Empty Latent', 'Input Image', 'Uploaded Image'], {
     'tooltip': (
         f'Latent Type\n'
         f'-----------\n'
         f' - Your choice of an empty latent (all zeros) or an image as a latent.\n\n'
     )
 })
-TYPE_LATENT_SELECTOR_RESOLUTION = ([
+TYPE_LATENT_SOURCE_RESOLUTION = ([
     'Custom',
     # HORIZONTAL
     '1920x1080 - 16:9',
@@ -172,14 +172,14 @@ TYPE_LATENT_SELECTOR_RESOLUTION = ([
         f' - Select custom to use the entered width & height, or select a resolution.\n\n'
     )
 })
-TYPE_LATENT_SELECTOR_ORIENTATION = (['Horizontal', 'Vertical'], {
+TYPE_LATENT_SOURCE_ORIENTATION = (['Horizontal', 'Vertical'], {
     'tooltip': (
         f'Orientaion Selector\n'
         f'-------------------\n'
         f' - Resolutions given in horizontal orientation. Selects vertical to swap.\n\n'
     )
 })
-TYPE_LATENT_SELECTOR_OUT = ('LATENT', )
+TYPE_LATENT_SOURCE_OUT = ('LATENT', )
 
 # ADVANCED SAMPLING
 TYPE_ADDED_LINES = ('INT', {'default': 0, 'min': -20, 'max': 50, 'tooltip': 'Add lines to text in image if your prompt is cut off.'})

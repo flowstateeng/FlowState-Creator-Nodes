@@ -20,13 +20,15 @@ print(f'  3. 💾 Loading node name mappings...')
 # MAPPINGS
 ##
 NODE_CLASS_MAPPINGS = {
-    'FlowState_LatentSelector': FlowState_LatentSelector,
-    # 'FlowState_FluxSampler': FlowState_FluxSampler,
+    'FlowState_LatentSource': FlowState_LatentSource,
+    # 'FlowState_FluxEngine': FlowState_FluxEngine,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    'FlowState_LatentSelector': '🌊 FlowState Latent Selector',
-    # 'FlowState_FluxSampler': '🌊 FlowState Flux Sampler',
+    'FlowState_LatentSource': '🌊 FlowState Latent Source',
+    # 'FlowState_QuickEdit': '🌊 FlowState Quick Edit',
+    # 'FlowState_FluxEngine': '🌊 FlowState Flux Engine',
+    # 'FlowState_AssetForge': '🌊 FlowState Asset Forge',
 }
 
 

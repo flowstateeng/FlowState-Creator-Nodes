@@ -1,4 +1,4 @@
-# Project: FlowState Latent Selector
+# Project: FlowState Latent Source
 # Description: Select from input/imported images to create a new batch of latent images, or select an empty latent.
 # Version: 0.0.1
 # Author: Johnathan Chivington
@@ -9,7 +9,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - ✅ Loaded Latent Selector')
+print(f'\t - ✅ Loaded Latent Source')
 
 
 ##
@@ -39,11 +39,11 @@ from comfy import model_management
 ##
 # NODES
 ##
-class FlowState_LatentSelector:
+class FlowState_LatentSource:
     CATEGORY = 'FlowState/latent'
     DESCRIPTION = 'Create a new batch of latent images to be denoised via sampling.'
     FUNCTION = 'execute'
-    RETURN_TYPES = TYPE_LATENT_SELECTOR_OUT
+    RETURN_TYPES = TYPE_LATENT_SOURCE_OUT
     RETURN_NAMES = ('Latent Image', )
     OUTPUT_TOOLTIPS = (
         'The latent image batch.',
@@ -60,9 +60,9 @@ class FlowState_LatentSelector:
     def INPUT_TYPES(s):
         return {
             'required': {
-                'resolution': TYPE_LATENT_SELECTOR_RESOLUTION,
-                'orientation': TYPE_LATENT_SELECTOR_ORIENTATION,
-                'latent_type': TYPE_LATENT_SELECTOR_INPUT_TYPE,
+                'resolution': TYPE_LATENT_SOURCE_RESOLUTION,
+                'orientation': TYPE_LATENT_SOURCE_ORIENTATION,
+                'latent_type': TYPE_LATENT_SOURCE_INPUT_TYPE,
                 'custom_width': TYPE_IMG_WIDTH,
                 'custom_height': TYPE_IMG_HEIGHT,
                 'custom_batch_size': TYPE_LATENT_BATCH_SIZE,
@@ -160,7 +160,7 @@ class FlowState_LatentSelector:
         return ({'samples': generated_latent}, )
 
     def execute(self, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size, image, vae, input_img=None):
-        print(f'\n\n\nFlowState Latent Selector')
+        print(f'\n\n\nFlowState Latent Source')
 
         loaded_latent, loaded_image = self.load_and_encode(image, vae)
         have_pixels = input_img != None
