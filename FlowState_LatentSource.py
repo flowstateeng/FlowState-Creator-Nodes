@@ -70,7 +70,7 @@ class FlowState_LatentSource:
                 'vae': TYPE_VAE_IN
             },
             'optional': {
-                'input_image': TYPE_IMAGE
+                'input_img': TYPE_IMAGE
             }
         }
 
