@@ -24,8 +24,10 @@ This suite provides streamlined solutions for generating:
 * 🎬 **Demo & Explainer Videos**
 * 🎵 **Music Video Sequences**
 * ...and much more.
-<br/><br/>
 
+<br/>
+---
+<br/>
 
 ## 💸 Sponsorship
 <div align="center">
@@ -40,15 +42,18 @@ Everything is open and free, but if you like my work and wish to see updates and
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
 Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
-<br/><br/>
 
+<br/>
+---
+<br/>
 
 ## 📊 Status
 ![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-<br/><br/>
 
+<br/>
 ---
+<br/>
 
 ## 💾 Installation
 
@@ -76,9 +81,10 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 </br>
 
 *After any of these methods, restart ComfyUI.*
-<br/><br/>
 
+<br/>
 ---
+<br/>
 
 ## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
@@ -88,9 +94,10 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ### 📆 Upcoming
 * Introduction of FlowState Flux Sampler
-<br/><br/>
 
+<br/>
 ---
+<br/>
 
 ## 🖧 Current Nodes
 ### FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
@@ -108,9 +115,10 @@ Vary the denoise on your sampler to control the amount of style transfer you wan
 <br/>
 
 Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
-<br/><br/>
 
+<br/>
 ---
+<br/>
 
 ## ✒️ Author
 **Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
