@@ -104,7 +104,7 @@ A simple switch to select between:
  
 Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
 <p align="center">
-  <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
+  <img width='750' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
 </p>
 <br/>
 
