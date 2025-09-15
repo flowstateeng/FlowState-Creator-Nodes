@@ -1,7 +1,7 @@
 [project]
 name = "flowstate-creator-nodes"
 description = "The ultimate suite of streamlined ComfyUI nodes for creative professionals."
-version = "0.0.4"
+version = "0.0.5"
 license = {file = "LICENSE"}
 dependencies = []
 
