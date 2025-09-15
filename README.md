@@ -81,14 +81,15 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ---
 
-## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
+## 🎉 RELEASE v0.0.1 ● 09/14/25 - 5:30 pm (GMT-5)
 
 ### 📋 Notes
 * Introduction of FlowState Latent Selector
-</br>
 
 ### 📆 Upcoming
-* Introduction of FlowState Flux Sampler
+* Introduction of FlowState Flux Engine: a Flux all-in-one.
+* Introduction of FlowState Quick Edit: a two-stage node that performs a rapid base edit and then applies a high-detail refinement pass to the result.
+* Introduction of FlowState Asset Forge: efficiently generate professional-grade assets with maximum control & quality.
 
 ---
 
