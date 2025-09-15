@@ -7,7 +7,11 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 
 ---
 
-## 📊 Status ![Build Status](https://img.shields.io/badge/build-Stable-green.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg)
+## 📊 Status
+![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+Due to the variability of operating systems, and versions of ComfyUI, Python, PyTorch, etc., as well as the maintenance of this repository being managed by once person, an occasional bug may occur. However, these nodes undergo thorough testing and beta testing before release, and are generally considered stable.
 
 ## 🚀 Key Features
 * **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
@@ -109,7 +113,7 @@ Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](ht
 </br>
 
 ## 🐞 Issues
-PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
+PLEASE MESSAGE YOUR BUG REPORTS PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
 </br>
 
 ## 🤝 Contributing
