@@ -9,7 +9,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - ✅ Loaded Latent Source')
+print(f'\t - ✅ 🌱 Loaded Latent Source')
 
 
 ##
@@ -40,17 +40,12 @@ from comfy import model_management
 # NODES
 ##
 class FlowState_LatentSource:
-    CATEGORY = 'FlowState Creator Suite/latent'
+    CATEGORY = 'FlowState Creator Suite/Latent'
     DESCRIPTION = 'Create a new batch of latent images to be denoised via sampling.'
     FUNCTION = 'execute'
     RETURN_TYPES = TYPE_LATENT_SOURCE_OUT
     RETURN_NAMES = ('Latent Image', )
-    OUTPUT_TOOLTIPS = (
-        'The latent image batch.',
-        'The image batch.',
-        'Image width.',
-        'Image height.',
-    )
+    OUTPUT_TOOLTIPS = ('The latent image batch.', )
 
     @classmethod
     def __init__(self):
@@ -66,7 +61,7 @@ class FlowState_LatentSource:
                 'custom_width': TYPE_IMG_WIDTH,
                 'custom_height': TYPE_IMG_HEIGHT,
                 'custom_batch_size': TYPE_LATENT_BATCH_SIZE,
-                'image': TYPE_INPUT_FILES,
+                'image': TYPE_INPUT_FILES(),
                 'vae': TYPE_VAE_IN
             },
             'optional': {
@@ -144,8 +139,6 @@ class FlowState_LatentSource:
         return latent, output_image
 
     def prepare_empty_latent(self, resolution, orientation, custom_width, custom_height, custom_batch_size):
-        print(f'  - Preparing empty latent.\n')
-
         horizontal_img = orientation == 'Horizontal'
 
         width_to_use = custom_width
@@ -157,26 +150,51 @@ class FlowState_LatentSource:
             height_to_use = int(res_split[1] if horizontal_img else res_split[0])
 
         generated_latent = self.generate(width_to_use, height_to_use, custom_batch_size)
-        return ({'samples': generated_latent}, )
+        return generated_latent
 
-    def execute(self, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size, image, vae, input_img=None):
-        print(f'\n\n\nFlowState Latent Source')
-
+    def prepare_latent_batch(self, batch_params):
+        (image, input_img, vae, resolution, orientation, custom_width,
+            custom_height, custom_batch_size, latent_type) = batch_params
+        
         loaded_latent, loaded_image = self.load_and_encode(image, vae)
         have_pixels = input_img != None
 
         if latent_type == 'Empty Latent':
-            return self.prepare_empty_latent(resolution, orientation, custom_width, custom_height, custom_batch_size)
+            return 'empty latent', self.prepare_empty_latent(resolution, orientation, custom_width, custom_height, custom_batch_size)
 
         if latent_type == 'Uploaded Image':
-            print(f'  - Preparing latent from loaded image.')
-            return ({'samples': loaded_latent}, )
+            return 'latent from loaded image', loaded_latent
         
         if latent_type == 'Input Image':
             if have_pixels:
-                print(f'  - Preparing latent from input image.')
                 input_latent = vae.encode(input_img[:,:,:,:3])
-                return ({'samples': input_latent}, )
+                return 'latent from input image', input_latent
             else:
-                print(f'  - No input image.')
-                return self.prepare_empty_latent(resolution, orientation, custom_width, custom_height, custom_batch_size)
+                return 'empty latent. No input image', self.prepare_empty_latent(resolution, orientation, custom_width, custom_height, custom_batch_size)
+
+    def execute(self, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size, image, vae, input_img=None):
+        print(
+            f'\n\n 🌊🌱 FlowState Latent Source'
+            f'\n  - Preparing latent batch...\n'
+        )
+
+        batch_start_time = time.time()
+
+        batch_params = (
+            image, input_img, vae, resolution, orientation, custom_width,
+            custom_height, custom_batch_size, latent_type
+        )
+
+        msg, latent_batch_out = self.prepare_latent_batch(batch_params)
+
+        batch_duration, batch_mins, batch_secs = get_mins_and_secs(batch_start_time)
+            
+        print(
+            f'\n 🌊🌱 FlowState Latent Source - Latent batch prepared.'
+            f'\n  - Prepared {msg}.'
+            f'\n  - Latent Batch Size: {latent_batch_out.shape}'
+            f'\n  - Preparation Time: {batch_mins}m {batch_secs}s ({batch_duration})\n'
+        )
+
+        return ({'samples': latent_batch_out}, )
+

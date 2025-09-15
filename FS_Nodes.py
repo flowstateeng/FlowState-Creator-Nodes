@@ -15,6 +15,7 @@ print(f'  2. 💾 Loading custom nodes...')
 # NODES
 ##
 from .FlowState_LatentSource import *
+from .FlowState_FluxEngine import *
 
 
 ##

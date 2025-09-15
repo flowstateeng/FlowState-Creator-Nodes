@@ -40,49 +40,113 @@ TYPE_ANY = (AnyType('*'), {})
 ##
 
 # NUMERICAL
-TYPE_FLOAT = ('FLOAT', {'default': 1, 'min': -sys.float_info.max, 'max': sys.float_info.max, 'step': 0.01})
-TYPE_INT = ('INT', {'default': 1, 'min': -sys.maxsize, 'max': sys.maxsize, 'step': 1})
+TYPE_FLOAT = ('FLOAT', {'default': 1, 'min': -sys.float_info.max, 'max': sys.float_info.max, 'step': 0.01, 'tooltip': (
+    f' Float\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - A floating point number.\n\n'
+)})
+TYPE_INT = ('INT', {'default': 1, 'min': -sys.maxsize, 'max': sys.maxsize, 'step': 1, 'tooltip': (
+    f' Integer\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - An integer number.\n\n'
+)})
 
 # LOGICAL
-TYPE_BOOLEAN = ('BOOLEAN', {'default': True})
-TYPE_BOOLEAN_FALSE = ('BOOLEAN', {'default': False})
-TYPE_BOOLEAN_TRUE = ('BOOLEAN', {'default': True})
-TYPE_BOOLEAN_PARAMS = ('BOOLEAN', {'default': False, 'tooltip': 'Add params to output images.'})
-TYPE_BOOLEAN_PROMPT = ('BOOLEAN', {'default': False, 'tooltip': 'Add prompt to output images.'})
-TYPE_BOOLEAN_PARAMS_TERM = ('BOOLEAN', {'default': False, 'tooltip': 'Print params to cmd/terminal.'})
-TYPE_BOOLEAN_PROMPT_TERM = ('BOOLEAN', {'default': False, 'tooltip': 'Print prompt to cmd/terminal.'})
+TYPE_BOOLEAN = ('BOOLEAN', {'default': True, 'tooltip': (
+    f' Boolean\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - A logical operator (True/False).\n\n'
+)})
+TYPE_BOOLEAN_FALSE = ('BOOLEAN', {'default': False, 'tooltip': (
+    f' Boolean (False)\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - A logical operator (True/False; default False).\n\n'
+)})
+TYPE_BOOLEAN_TRUE = ('BOOLEAN', {'default': True, 'tooltip': (
+    f' Boolean (True)\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - A logical operator (True/False; default True).\n\n'
+)})
 
 # STRING
-TYPE_STRING_IN = ('STRING', {'default': 'Enter a value.'})
-TYPE_STRING_ML = ('STRING', {'multiline': True, 'default': 'Enter a value.'})
+TYPE_STRING_IN = ('STRING', {'default': 'Enter a value.', 'tooltip': (
+    f' String\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - String input (text).\n\n'
+)})
+TYPE_STRING_ML = ('STRING', {'multiline': True, 'default': 'Enter a value.', 'tooltip': (
+    f' Multiline String\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Multiline string input (text).\n\n'
+)})
 
 # IMAGE
-TYPE_IMG_WIDTH = ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8, 'tooltip': 'Defines width input image.'})
-TYPE_IMG_HEIGHT = ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8, 'tooltip': 'Defines height of the input image.'})
+TYPE_IMG_WIDTH = ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8, 'tooltip': (
+    f' Width\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Defines the width of the image.\n\n'
+)})
+TYPE_IMG_HEIGHT = ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTION, 'step': 8, 'tooltip': (
+    f' Height\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Defines the height of the image.\n\n'
+)})
 
 # LATENT
-TYPE_LATENT_IN = ('LATENT', {'tooltip': 'Input latent image for diffusion process.'})
+TYPE_LATENT_IN = ('LATENT', {'tooltip': (
+    f' Latent Image\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Input latent image for diffusion sampling.\n\n'
+)})
 
 # SAMPLING
-TYPE_POSITIVE_CONDITIONING = ('CONDITIONING', {'tooltip': 'Positive conditioning from encoded text prompt.'})
-TYPE_NEGATIVE_CONDITIONING = ('CONDITIONING', {'tooltip': 'Negative conditioning from encoded text prompt. For SD models only. Will not be used for Flux.'})
-TYPE_SEED = ('INT', {'default': 4, 'min': -sys.maxsize, 'max': sys.maxsize, 'step': 1, 'tooltip': 'Random noise seed.'})
-TYPE_STEPS = ('INT', {'default': 32, 'min': 1, 'max': 10000, 'tooltip': 'Defines the number of steps to take in the sampling process.'})
-TYPE_GUIDANCE = ('FLOAT', {'default': 4.0, 'min': 0.0, 'max': 100.0, 'step':0.1, 'round': 0.01, 'tooltip': 'Controls the influence of external guidance (such as prompts or conditions) on the sampling process.'})
+TYPE_POSITIVE_CONDITIONING = ('CONDITIONING', {'tooltip': (
+    f' Positive Conditioning\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Positive conditioning from encoded text prompt.\n\n'
+)})
+TYPE_NEGATIVE_CONDITIONING = ('CONDITIONING', {'tooltip': (
+    f' Negative Conditioning\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Negative conditioning from encoded text prompt.\n\n'
+)})
+TYPE_SEED = ('INT', {'default': 32, 'min': -sys.maxsize, 'max': sys.maxsize, 'step': 1, 'tooltip': (
+    f' Seed\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Seed used to generate inital random noise.\n\n'
+)})
+TYPE_STEPS = ('INT', {'default': 32, 'min': 1, 'max': 10000, 'tooltip': (
+    f' Steps\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Defines the number of steps to take in the sampling process.\n\n'
+)})
+TYPE_GUIDANCE = ('FLOAT', {'default': 3.2, 'min': 0.0, 'max': 100.0, 'step':0.1, 'round': 0.01, 'tooltip': (
+    f' Guidance\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Defines the number of steps to take in the sampling process.\n\n'
+)})
 TYPE_DENOISE = ('FLOAT', {
     'default': 1.0, 'min': 0.0, 'max': 1.0, 'step': 0.01,
     'tooltip': (
-        f'Sampler Denoise Amount\n\n'
+        f' Sampler Denoise Amount\n {"-" * TOOLTIP_UNDERLINE}\n'
         f' - The amount of denoising applied, lower values will maintain the structure of the initial image allowing for image to image sampling.\n\n'
     )
 })
+TYPE_PROMPT_POSITIVE = ('STRING', {'multiline': True, 'default': 'Enter your positive prompt.', 'tooltip': (
+    f' Positive Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Positive text prompt describing your desired output.\n\n'
+)})
 
 # MODEL
-TYPE_MODEL_IN = ('MODEL', {'tooltip': 'Input model.'})
-TYPE_CLIP_IN = ('CLIP', {'tooltip': 'The CLIP model used for encoding the text.'})
-TYPE_VAE_IN = ('VAE', {'tooltip': 'The VAE model used for encoding and decoding images.'})
-TYPE_CONTROL_NET_IN = ('CONTROL_NET', {'tooltip': 'The Control Net model used to patch your diffusion model.'})
-TYPE_LORA_IN = ('LORA', {'tooltip': 'The LoRA used to patch your diffusion model.'})
+TYPE_MODEL_IN = ('MODEL', {'tooltip': (
+    f' Input Model\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Diffusion model to be used in sampling.\n\n'
+)})
+TYPE_CLIP_IN = ('CLIP', {'tooltip': (
+    f' CLIP / Text Encoder Model\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The CLIP / Text Encoder model used for encoding the text.\n\n'
+)})
+TYPE_VAE_IN = ('VAE', {'tooltip': (
+    f' Variational AutoEncoder (VAE)\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The VAE model used for encoding and decoding images.\n\n'
+)})
+TYPE_CONTROL_NET_IN = ('CONTROL_NET', {'tooltip': (
+    f' Control Net\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The Control Net model used to patch your diffusion model.\n\n'
+)})
+TYPE_LORA_IN = ('LORA', {'tooltip': (
+    f' Low Rank Adaptation Model (LoRA)\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The LoRA used to patch your diffusion model.\n\n'
+)})
+TYPE_WEIGHT_DTYPE = (['default', 'fp8_e4m3fn', 'fp8_e4m3fn_fast', 'fp8_e5m2'], {'tooltip': (
+    f' Weight Datatype (DType)\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The data type to be used for your models weights.\n\n'
+)})
 
 # MISC
 TYPE_JSON_WIDGET = ('JSON', {'forceInput': True})
@@ -95,21 +159,55 @@ TYPE_METADATA_RAW = ('METADATA_RAW', {'forceInput': True})
 ##
 
 # MODELS
-TYPE_DIFFUSION_MODELS_LIST = (DIFFUSION_MODELS_LIST(), {'tooltip': 'Diffusion model list.'})
-TYPE_CHECKPOINTS_LIST = (CHECKPOINTS_LIST(), {'tooltip': 'Checkpoint list.'})
-TYPE_CLIPS_LIST = (CLIPS_LIST(), {'tooltip': 'CLIP/text encoder list.'})
-TYPE_VAES_LIST = (VAES_LIST(), {'tooltip': 'VAE list.'})
-TYPE_CONTROL_NETS_LIST = (['none'] + CONTROL_NETS_LIST(), {'tooltip': 'Control Net list.'})
-TYPE_LORAS_LIST = (['none'] + LORAS_LIST(), {'tooltip': 'LoRA list.'})
-TYPE_ALL_MODEL_LISTS = (ALL_MODELS_LIST(), {'tooltip': 'Full diffusion model list.'})
+TYPE_DIFFUSION_MODELS_LIST = lambda: (DIFFUSION_MODELS_LIST(), {'tooltip': (
+    f' Diffusion Model List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available diffusion models.\n\n'
+)})
+TYPE_CHECKPOINTS_LIST = lambda: (CHECKPOINTS_LIST(), {'tooltip': (
+    f' Checkpoint List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available model checkpoints.\n\n'
+)})
+TYPE_CLIPS_LIST = lambda: (CLIPS_LIST(), {'tooltip': (
+    f' CLIP / Text Encoder List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Text Encoders and CLIP models.\n'
+    f' - Used to convert your text prompts into semantic attention vectors (i.e., numbers) that the model can process.\n'
+    f' - Contrastive Language-Image Pre-training (CLIP)\n\n'
+)})
+TYPE_VAES_LIST = lambda: (VAES_LIST(), {'tooltip': (
+    f' VAE List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Variational Autoencoders (VAE).\n'
+    f' - Used to encode and decode images.\n\n'
+)})
+TYPE_CONTROL_NETS_LIST = lambda: (['none'] + CONTROL_NETS_LIST(), {'tooltip': (
+    f' Control Net List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Control Nets.\n'
+    f' - Used to transfer structure of an input image to a generated output image.\n\n'
+)})
+TYPE_LORAS_LIST = lambda: (['none'] + LORAS_LIST(), {'tooltip': (
+    f' LoRA List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Low-Rank Adaptation models.\n'
+    f' - Used to transfer a pre-trained style (cyberpunk, anime, photorealism, disney, etc.) to a generated output image.\n\n'
+)})
+TYPE_ALL_MODEL_LISTS = lambda: (ALL_MODELS_LIST(), {'tooltip': (
+    f' Full Diffusion Model List\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of all available Diffusion Models (diffusion_models, checkpoints & unets folders).\n\n'
+)})
 
 # SAMPLING
-TYPE_SAMPLERS = (SAMPLERS_LIST(), {'tool_tip': 'The sampling algorithm(s) used during the diffusion process.'}, )
-TYPE_SCHEDULERS = (SCHEDULERS_LIST(), {'tool_tip': 'The scheduling algorithm(s) used during the diffusion process.'}, )
+TYPE_SAMPLERS = lambda: (SAMPLERS_LIST(), {'tooltip': (
+    f' Sampling Algorithm\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Sampling Algorithms.\n'
+    f' - Used to control the noise removal during the sampling process.\n\n'
+)})
+TYPE_SCHEDULERS = lambda: (SCHEDULERS_LIST(), {'tooltip': (
+    f' Scheduling Algorithm\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - List of available Scheduling Algorithms.\n'
+    f' - Used to control the denoising steps during the sampling process.\n\n'
+)})
 
 # FILES
-TYPE_INPUT_FILES = (sorted(INPUT_FILES()), {'image_upload': True})
-TYPE_OUTPUT_FILES = (sorted(OUTPUT_FILES()), {'image_upload': True})
+TYPE_INPUT_FILES = lambda: (sorted(INPUT_FILES()), {'image_upload': True})
+TYPE_OUTPUT_FILES = lambda: (sorted(OUTPUT_FILES()), {'image_upload': True})
 
 
 
@@ -133,14 +231,12 @@ TYPE_IMAGE = ('IMAGE', )
 
 # LATENT SOURCE
 TYPE_LATENT_BATCH_SIZE = ('INT', {'default': 1, 'min': 1, 'max': 4096, 'tooltip': (
-        f'Custom Batch Size\n'
-        f'-----------------\n'
+        f' Custom Batch Size\n {"-" * TOOLTIP_UNDERLINE}\n'
         f' - The number of images you want to generate.\n\n'
     )})
 TYPE_LATENT_SOURCE_INPUT_TYPE = (['Empty Latent', 'Input Image', 'Uploaded Image'], {
     'tooltip': (
-        f'Latent Type\n'
-        f'-----------\n'
+        f' Latent Type\n {"-" * TOOLTIP_UNDERLINE}\n'
         f' - Your choice of an empty latent (all zeros) or an image as a latent.\n\n'
     )
 })
@@ -167,20 +263,25 @@ TYPE_LATENT_SOURCE_RESOLUTION = ([
     '512x512 - 1:1'
     ], {
     'tooltip': (
-        f'Resolution Selector\n'
-        f'-------------------\n'
+        f' Resolution Selector\n {"-" * TOOLTIP_UNDERLINE}\n'
         f' - Select custom to use the entered width & height, or select a resolution.\n\n'
     )
 })
 TYPE_LATENT_SOURCE_ORIENTATION = (['Horizontal', 'Vertical'], {
     'tooltip': (
-        f'Orientaion Selector\n'
-        f'-------------------\n'
-        f' - Resolutions given in horizontal orientation. Selects vertical to swap.\n\n'
+        f' Orientaion Selector\n {"-" * TOOLTIP_UNDERLINE}\n'
+        f' - Resolutions given in horizontal orientation. Select vertical to swap resolution aspect ratio.\n\n'
     )
 })
 TYPE_LATENT_SOURCE_OUT = ('LATENT', )
 
+
+# FLUX ENGINE
+TYPE_FLUX_ENGINE_OUT = ('MODEL', 'CLIP', 'VAE', 'IMAGE', 'LATENT', )
+
+
+
+# --- TO DO ---
 # ADVANCED SAMPLING
 TYPE_ADDED_LINES = ('INT', {'default': 0, 'min': -20, 'max': 50, 'tooltip': 'Add lines to text in image if your prompt is cut off.'})
 TYPE_SEED_LIST = ('STRING', {'default': '4', 'tooltip': 'Random noise seed list. If not empty, seed list is used instead of seed.'})

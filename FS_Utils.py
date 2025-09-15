@@ -16,7 +16,7 @@ def get_mins_and_secs(start_time):
     duration = time.time() - start_time
     mins = int(duration // 60)
     secs = int(duration - mins * 60)
-    return duration, mins, secs
+    return round(duration, 4), mins, secs
 
 
 # I/O
