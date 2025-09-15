@@ -8,16 +8,14 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 ---
 
 ## 🚀 Key Features
-
 * **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
 * **Production Ready:** Engineered for stability, efficiency & simplicity to handle large-scale generation jobs with ease.
 * **Focus on Quality & Control:** Provides the necessary inputs and outputs for fine-tuning professional assets without unnecessary clutter.
 * **Scalable by Nature:** Designed for batch processing and automation, turning one-off creations into scalable pipelines.
+</br>
 
 ## 🎯 What You Can Build
-
 This suite provides streamlined solutions for generating:
-
 * 🖼️ **YouTube Thumbnails**
 * 🎨 **Logos & Brand Assets**
 * 🌐 **Website & Social Media Banners**
@@ -29,18 +27,13 @@ This suite provides streamlined solutions for generating:
 <br/><br/>
 
 
-# 💸 Sponsorship
+## 💸 Sponsorship
 <div align="center">
 
 ** [:heart: Github Sponsor](https://github.com/sponsors/flowstateeng) | [:coin: Ca$hApp](cash.app/$FlowStateEngineering) | [:dollar: Venmo](account.venmo.com/u/flowstateeng) | [:goat: Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN) **
 
 </div>
-
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
-
-- [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
-
-Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/@flowstateeng)
 
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
@@ -93,8 +86,8 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 <br/><br/>
 
 
-# 🗂️ Current Nodes
-## FlowState Latent Selector
+# 🖧 Current Nodes
+## FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
 Simplify your latent options and clean up your workflow with FlowState Latent Selector.
 
 A simple switch to select between:
@@ -105,7 +98,11 @@ A simple switch to select between:
 Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
 <p align="center">
   <img width='850' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FS-Latent-Selector.png' alt='FS Latent Selector Image'/>
-</p><br/><br/>
+</p>
+<br/>
+
+Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
+<br/><br/>
 
 
 ## ✒️ Author
