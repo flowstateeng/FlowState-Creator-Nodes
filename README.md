@@ -48,6 +48,7 @@ Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 <br/><br/>
 
+---
 
 ## 💾 Installation
 
@@ -77,6 +78,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 *After any of these methods, restart ComfyUI.*
 <br/><br/>
 
+---
 
 ## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
@@ -88,6 +90,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 * Introduction of FlowState Flux Sampler
 <br/><br/>
 
+---
 
 ## 🖧 Current Nodes
 ### FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
@@ -107,18 +110,19 @@ Vary the denoise on your sampler to control the amount of style transfer you wan
 Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
 <br/><br/>
 
+---
 
 ## ✒️ Author
 **Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
 </br>
 
 ## 🐞 Issues
-* PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
+PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
 </br>
 
 ## 🤝 Contributing
 Not currently accepting outside contributors.
-<br/>
+<br/></br>
 
 ## 📄 License
 MIT
