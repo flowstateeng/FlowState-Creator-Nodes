@@ -7,9 +7,7 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 
 ---
 
-## 📊 Status
-![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+## 📊 Status ![Build Status](https://img.shields.io/badge/build-Stable-green.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 🚀 Key Features
 * **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
