@@ -1,5 +1,5 @@
-# Project: FlowState Creator Nodes Initialization
-# Description: Initialize the FlowState Creator Nodes modules.
+# Project: FlowState Creator Suite Initialization
+# Description: Initialize the FlowState Creator Suite modules.
 # Author: Johnathan Chivington
 # Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
 
@@ -9,7 +9,7 @@
 # SYSTEM STATUS
 ##
 print(
-    f'\n\n 🌊 FlowState Creator Nodes 🌊'
+    f'\n\n 🌊 FlowState Creator Suite 🌊'
     f'\n-------------------------------'
     f'\n  1. ⏳ System initializing...'
 )

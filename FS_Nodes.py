@@ -1,4 +1,4 @@
-# Project: FlowState Creator Nodes
+# Project: FlowState Creator Suite
 # Description: A collection of custom nodes to solve problems I couldn't find existing nodes for.
 # Author: Johnathan Chivington
 # Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng

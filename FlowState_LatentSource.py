@@ -40,7 +40,7 @@ from comfy import model_management
 # NODES
 ##
 class FlowState_LatentSource:
-    CATEGORY = 'FlowState/latent'
+    CATEGORY = 'FlowState Creator Suite/latent'
     DESCRIPTION = 'Create a new batch of latent images to be denoised via sampling.'
     FUNCTION = 'execute'
     RETURN_TYPES = TYPE_LATENT_SOURCE_OUT
