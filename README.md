@@ -36,7 +36,7 @@ This suite provides streamlined solutions for generating:
 ## 💸 Sponsorship
 <div align="center">
 
-❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership) | 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng) | 💸 [Ca$hApp](cash.app/$FlowStateEngineering) | 💰 [Venmo](account.venmo.com/u/flowstateeng) | 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN)
+❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership)  | 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng)  | 💸 [Ca$hApp](cash.app/$FlowStateEngineering)  | 💰 [Venmo](account.venmo.com/u/flowstateeng)  | 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN)
 
 </div>
 
