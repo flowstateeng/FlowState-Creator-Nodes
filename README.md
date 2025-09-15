@@ -33,6 +33,7 @@ This suite provides streamlined solutions for generating:
 ** [:heart: Github Sponsor](https://github.com/sponsors/flowstateeng) | [:coin: Ca$hApp](cash.app/$FlowStateEngineering) | [:dollar: Venmo](account.venmo.com/u/flowstateeng) | [:goat: Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN) **
 
 </div>
+
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
 </br></br>
 
@@ -50,13 +51,13 @@ Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng)
 
 ## 💾 Installation
 
-## Method 1.
+### Method 1.
 1. Open the ComfyUI Manager
 2. Select "Install via Git URL"
 3. Paste this link: https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 4. Click "Confirm"
 
-## Method 2.
+### Method 2.
 1. Open a terminal or command prompt and navigate to your Custom Nodes folder.
 ```bash
 cd /path/to/your/ComfyUI/custom_nodes
@@ -66,7 +67,7 @@ cd /path/to/your/ComfyUI/custom_nodes
 git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
 
-## Method 3 (Coming Soong)
+### Method 3 (Coming Soong)
 1. Open the ComfyUI Manager
 2. Click "Custom Nodes Manager"
 3. In the searchbar, search "FlowState"
@@ -79,17 +80,17 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
-## 📋 Notes
+### 📋 Notes
 * Introduction of FlowState Latent Selector
 </br>
 
-## 📆 Upcoming
+### 📆 Upcoming
 * Introduction of FlowState Flux Sampler
 <br/><br/>
 
 
-# 🖧 Current Nodes
-## FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
+## 🖧 Current Nodes
+### FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
 Simplify your latent options and clean up your workflow with FlowState Latent Selector.
 
 A simple switch to select between:
@@ -108,15 +109,16 @@ Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](ht
 
 
 ## ✒️ Author
-**Johnathan Chivington:**
-* [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
+**Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
+</br>
 
 ## 🐞 Issues
 * PLEASE MESSAGE YOUR BUG REPORTS ON DISCORD, PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
+</br>
 
 ## 🤝 Contributing
 Not currently accepting outside contributors.
-<br/><br/>
+<br/>
 
 ## 📄 License
 MIT
