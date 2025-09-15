@@ -41,17 +41,14 @@ The only way to keep the code open and free is by sponsoring its development. Th
 
 Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
 
-<br/>
+
 ---
-<br/>
 
 ## 📊 Status
 ![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-<br/>
 ---
-<br/>
 
 ## 💾 Installation
 
@@ -80,9 +77,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 *After any of these methods, restart ComfyUI.*
 
-<br/>
 ---
-<br/>
 
 ## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
@@ -93,9 +88,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ### 📆 Upcoming
 * Introduction of FlowState Flux Sampler
 
-<br/>
 ---
-<br/>
 
 ## 🖧 Current Nodes
 ### FlowState Latent Selector [FlowState Latent Selector](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSelector_.py)
@@ -114,9 +107,7 @@ Vary the denoise on your sampler to control the amount of style transfer you wan
 
 Video tutorials can be found on YouTube at [FlowState Creator Nodes Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
 
-<br/>
 ---
-<br/>
 
 ## ✒️ Author
 **Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
