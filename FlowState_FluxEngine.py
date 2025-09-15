@@ -32,6 +32,7 @@ import numpy as np
 from torchvision import transforms
 from PIL import Image, ImageDraw, ImageFont
 import warnings
+import importlib
 
 import comfy.utils
 import comfy.sd
@@ -48,13 +49,35 @@ from comfy_extras.nodes_custom_sampler import BasicScheduler
 from comfy_extras.nodes_custom_sampler import SamplerCustomAdvanced
 from comfy_extras.nodes_flux import FluxGuidance
 
-from nodes import EmptyLatentImage
 from nodes import CLIPTextEncode
 
+# --- IMPORT KIJAI (THE GOAT) SAGE ATTENTION UNTIL COMFY CORE IMPLEMENTS A NODE
+SAGE_ATTENTION_INSTALLED = False
+KJNODES_INSTALLED = False
+PatchSageAttention = None
+sageattn_modes = ['disabled']
 
-warnings.filterwarnings('ignore', message='clean_up_tokenization_spaces')
-warnings.filterwarnings('ignore', message='Torch was not compiled with flash attention')
-warnings.filterwarnings('ignore', category=FutureWarning)
+try:
+    kj_module_path = importlib.import_module('custom_nodes.ComfyUI-KJNodes.nodes.model_optimization_nodes')
+    KJNODES_INSTALLED = True
+    print('\t   - 🟢 KJ Nodes available.')
+except:
+    print('\t   - 🚨 KJNODES NOT AVAILABLE')
+    
+try:
+    importlib.import_module("sageattention")
+    SAGE_ATTENTION_INSTALLED = True
+    print('\t   - 🟢 Sage Attention available.')
+except:
+    print('\t   - 🚨 SAGE ATTENTION NOT AVAILABLE')
+
+
+if SAGE_ATTENTION_INSTALLED and KJNODES_INSTALLED:
+    print('\t   - ✅ KJ Nodes & Sage Attention available.')
+    print('\t      - 🥳🎉 Activating Sage Attention for 🌊🚒 FlowState Flux Engine.')
+    PatchSageAttention = kj_module_path.PathchSageAttentionKJ()
+    sageattn_modes = kj_module_path.sageattn_modes
+
 
 
 ##
@@ -85,6 +108,7 @@ class FlowState_FluxEngine:
             'required': {
                 'model_name': TYPE_DIFFUSION_MODELS_LIST(),
                 'weight_dtype': TYPE_WEIGHT_DTYPE,
+                'sage_attention': (sageattn_modes, ),
                 'clip_1_name': TYPE_CLIPS_LIST(),
                 'clip_2_name': TYPE_CLIPS_LIST(),
                 'vae_name': TYPE_VAES_LIST(),
@@ -304,8 +328,8 @@ class FlowState_FluxEngine:
         return img_batch_out, latent_batch_out
 
     def execute(
-            self, model_name, weight_dtype, clip_1_name, clip_2_name, vae_name, resolution, orientation, latent_type,
-            custom_width, custom_height, custom_batch_size, image, seed, sampling_algorithm, scheduling_algorithm,
+            self, model_name, weight_dtype, sage_attention, clip_1_name, clip_2_name, vae_name, resolution, orientation,
+            latent_type, custom_width, custom_height, custom_batch_size, image, seed, sampling_algorithm, scheduling_algorithm,
             guidance, steps, denoise, prompt, input_img=None
         ):
 
@@ -321,7 +345,12 @@ class FlowState_FluxEngine:
                 f'\n  - Loading {clip_2_name}...'
                 f'\n  - Loading {vae_name}...\n'
             )
-            self.loaded_model = UNETLoader().load_unet(model_name, weight_dtype)[0]
+            if sage_attention != 'disabled':
+                self.loaded_model = UNETLoader().load_unet(model_name, weight_dtype)[0]
+                self.loaded_model = PatchSageAttention.patch(self.loaded_model, sage_attention)[0]
+            else:
+                self.loaded_model = UNETLoader().load_unet(model_name, weight_dtype)[0]
+
             self.loaded_clip = DualCLIPLoader().load_clip(clip_1_name, clip_2_name, 'flux', 'default')[0]
             self.loaded_vae = VAELoader().load_vae(vae_name)[0]
         else:

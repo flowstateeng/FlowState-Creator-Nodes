@@ -83,20 +83,20 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ---
 
-## 🎉 RELEASE v0.0.1 ● 09/14/25 - 5:30 pm (GMT-5)
+## 🎉 RELEASE v0.0.1 ● 09/15/25 - 11:30 am (GMT-5)
 
 ### 📋 Notes
-* Introduction of FlowState Latent Source
+* Introduction of 🌊🚒 FlowState Flux Engine: a Flux all-in-one. (See full description below.)
 
 ### 📆 Upcoming
-* Introduction of FlowState Flux Engine: a Flux all-in-one.
+* LoRA integration for the 🌊🚒 FlowState Flux Engine.
 * Introduction of FlowState Quick Edit: a two-stage node that performs a rapid base edit and then applies a high-detail refinement pass to the result.
 * Introduction of FlowState Asset Forge: efficiently generate professional-grade assets with maximum control & quality.
 
 ---
 
 ## 🖧 Current Nodes
-### [FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource_.py)
+### [🌊🌱 FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource.py)
 Simplify your latent options and clean up your workflow with FlowState Latent Source.
 
 A simple switch to select between:
@@ -105,6 +105,20 @@ A simple switch to select between:
  - uploaded image as a latent
  
 Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
+<p align="center">
+  <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
+</p>
+
+### [🌊🚒 FlowState Flux Engine](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_FluxEngine.py)
+Streamline your entire generation workflow with the FlowState Flux Engine.
+
+An all-in-one node that seamlessly combines:
+- Model, VAE, and CLIP loading (with Model Persistence to prevent subsequent reloads.)
+- Prompt conditioning & guidance.
+- Sage Attention model patching (for users with that capability)
+- The integrated FlowState Latent Source for flexible resolution selection & easy i2i style transfer.
+
+Reduce your node clutter and go from concept to final image faster than ever within a single, powerful engine.
 <p align="center">
   <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
 </p>
