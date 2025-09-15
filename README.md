@@ -36,12 +36,12 @@ This suite provides streamlined solutions for generating:
 ## 💸 Sponsorship
 <div align="center">
 
-** ❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership) | 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng) | 💸 [Ca$hApp](cash.app/$FlowStateEngineering) | 💰 [Venmo](account.venmo.com/u/flowstateeng) | 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN) **
+❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership) | 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng) | 💸 [Ca$hApp](cash.app/$FlowStateEngineering) | 💰 [Venmo](account.venmo.com/u/flowstateeng) | 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN)
 
 </div>
 
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
-</br></br>
+</br>
 
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
