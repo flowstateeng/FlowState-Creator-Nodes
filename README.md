@@ -25,9 +25,7 @@ This suite provides streamlined solutions for generating:
 * 🎵 **Music Video Sequences**
 * ...and much more.
 
-<br/>
 ---
-<br/>
 
 ## 💸 Sponsorship
 <div align="center">
