@@ -56,11 +56,19 @@ I preesh-y8-cha! 🤗🙌🥰
 
 ### Method 1.
 1. Open the ComfyUI Manager
+2. Click "Custom Nodes Manager"
+3. In the searchbar, search "FlowState Creator Nodes"
+4. Click "Install" next to "🌊 FlowState Creator Nodes"
+
+*● DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Nodes' (WITH THE WAVE)*
+
+### Method 2.
+1. Open the ComfyUI Manager
 2. Select "Install via Git URL"
 3. Paste this link: https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 4. Click "Confirm"
 
-### Method 2.
+### Method 3
 1. Open a terminal or command prompt and navigate to your Custom Nodes folder.
 ```bash
 cd /path/to/your/ComfyUI/custom_nodes
@@ -69,12 +77,6 @@ cd /path/to/your/ComfyUI/custom_nodes
 ```bash
 git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
-
-### Method 3
-1. Open the ComfyUI Manager
-2. Click "Custom Nodes Manager"
-3. In the searchbar, search "FlowState"
-4. Click "Install"
 </br>
 
 *After any of these methods, restart ComfyUI.*
