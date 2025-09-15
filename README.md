@@ -11,7 +11,7 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 ![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-Due to the variability of operating systems, and versions of ComfyUI, Python, PyTorch, etc., as well as the maintenance of this repository being managed by once person, an occasional bug may occur. However, these nodes undergo thorough testing and beta testing before release, and are generally considered stable.
+Due to the variability of operating systems, and versions of ComfyUI, Python, PyTorch, etc., as well as the maintenance of this repository being managed by one person, an occasional bug may occur. However, these nodes undergo thorough testing and beta testing before release, and are generally considered stable.
 
 ## 🚀 Key Features
 * **Workflow-Oriented Design:** Nodes are built to work together seamlessly for common production tasks, minimizing complexity.
