@@ -12,7 +12,7 @@ Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are
 * **Production Ready:** Engineered for stability, efficiency & simplicity to handle large-scale generation jobs with ease.
 * **Focus on Quality & Control:** Provides the necessary inputs and outputs for fine-tuning professional assets without unnecessary clutter.
 * **Scalable by Nature:** Designed for batch processing and automation, turning one-off creations into scalable pipelines.
-</br>
+
 
 ## 🎯 What You Can Build
 This suite provides streamlined solutions for generating:
@@ -35,6 +35,7 @@ This suite provides streamlined solutions for generating:
 </div>
 Everything is open and free, but if you like my work and wish to see updates and new features please consider sponsoring my projects.
 
+
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
 Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
@@ -42,20 +43,20 @@ Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng)
 
 
 ## 📊 Status
-![Build Status](https://img.shields.io/badge/build-Experimental-yellow.svg)
+![Build Status](https://img.shields.io/badge/build-Stable-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 <br/><br/>
 
 
 ## 💾 Installation
 
-# Method 1.
+## Method 1.
 1. Open the ComfyUI Manager
 2. Select "Install via Git URL"
 3. Paste this link: https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 4. Click "Confirm"
 
-# Method 2.
+## Method 2.
 1. Open a terminal or command prompt and navigate to your Custom Nodes folder.
 ```bash
 cd /path/to/your/ComfyUI/custom_nodes
@@ -65,21 +66,22 @@ cd /path/to/your/ComfyUI/custom_nodes
 git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
 
-# Method 3 (Coming Soong)
+## Method 3 (Coming Soong)
 1. Open the ComfyUI Manager
 2. Click "Custom Nodes Manager"
 3. In the searchbar, search "FlowState"
 4. Click "Install"
+</br>
 
-
-* After any of these methods, restart ComfyUI.
+*After any of these methods, restart ComfyUI.*
 <br/><br/>
 
 
-# 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
+## 🎉 0.0.1 RELEASE (LATEST) 09/14/25 - 5:30 pm (GMT-5) #
 
 ## 📋 Notes
 * Introduction of FlowState Latent Selector
+</br>
 
 ## 📆 Upcoming
 * Introduction of FlowState Flux Sampler
