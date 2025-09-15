@@ -120,11 +120,11 @@ An all-in-one node that seamlessly combines:
 
 Reduce your node clutter and go from concept to final image faster than ever within a single, powerful engine.
 <p align="center">
-  <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
+  <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Flux%20Engine.png' alt='FS Latent Source Image'/>
 </p>
 <br/>
 
-Video tutorials can be found on YouTube at [FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
+Video tutorials can be found on YouTube at [🌊 FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws)
 
 ---
 
