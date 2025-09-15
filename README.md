@@ -60,7 +60,7 @@ I preesh-y8-cha! 🤗🙌🥰
 3. In the searchbar, search "FlowState Creator Nodes"
 4. Click "Install" next to "🌊 FlowState Creator Nodes"
 
-*🚨 DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Nodes' (WITH THE WAVE) 🚨*
+*🚨 DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Nodes' (WITH THE WAVE)*
 
 ### Method 2.
 1. Open the ComfyUI Manager
