@@ -45,7 +45,7 @@ Everything is open and free, but if you like my work and wish to see updates and
 
 The only way to keep the code open and free is by sponsoring its development. The more sponsorships, the more time I can dedicate to open source projects for everyone!
 
-Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
+Please consider a [Github Sponsorship](https://github.com/sponsors/flowstateeng) or [Patreon Membership](https://www.patreon.com/c/flowstateeng/membership), or one-time donations through [CashApp](cash.app/$FlowStateEngineering), [Venmo](account.venmo.com/u/flowstateeng) or [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN).
 
 ---
 
@@ -67,7 +67,7 @@ cd /path/to/your/ComfyUI/custom_nodes
 git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ```
 
-### Method 3 (Coming Soong)
+### Method 3 (Coming Soon)
 1. Open the ComfyUI Manager
 2. Click "Custom Nodes Manager"
 3. In the searchbar, search "FlowState"
