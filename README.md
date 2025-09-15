@@ -94,7 +94,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 ---
 
 ## 🖧 Current Nodes
-### FlowState Latent Source [FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource_.py)
+### [FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource_.py)
 Simplify your latent options and clean up your workflow with FlowState Latent Source.
 
 A simple switch to select between:
