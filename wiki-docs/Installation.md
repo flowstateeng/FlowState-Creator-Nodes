@@ -1,6 +1,4 @@
-# 💾 Installation
-
-There are several ways to install the FlowState Creator Suite.
+## 💾 Installation
 
 ### Method 1.
 1. Open the ComfyUI Manager
