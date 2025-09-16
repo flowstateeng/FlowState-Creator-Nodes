@@ -83,7 +83,7 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ---
 
-## 🎉 RELEASE v0.1.1
+## 🎉 RELEASE v0.1.2
 
 ### 📋 Notes
 * Introduction of 🌊🌱 FlowState Latent Source
