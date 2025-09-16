@@ -5,9 +5,6 @@
 # 🌊 FlowState Creator Suite
 Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are for creators who want to move beyond experimentation and into scalable production. Stop spending hours building and tweaking complex graphs for repeatable tasks. The FlowState Creator Suite is purpose-built to deliver consistent, professional-grade results for common creative needs, allowing you to focus on your vision, not the wiring.
 
-## 📖 Docs
-View documentation, installation, usage, best practices, release information, and upcoming features [here](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki)
-
 ---
 
 ## 📊 Status
@@ -15,6 +12,9 @@ View documentation, installation, usage, best practices, release information, an
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 Due to the variability of operating systems, and versions of ComfyUI, Python, PyTorch, etc., as well as the maintenance of this repository being managed by one person, an occasional bug may occur. However, these nodes undergo thorough testing and beta testing before release, and are generally considered stable.
+
+## 📖 Docs
+View documentation, installation, usage, best practices, release information, and upcoming features [here](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki)
 
 ---
 
@@ -62,7 +62,7 @@ I preesh-y8-cha! 🤗🙌🥰
 </br>
 
 ## 🐞 Issues
-PLEASE MESSAGE YOUR BUG REPORTS PATREON, OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
+PLEASE MESSAGE YOUR BUG REPORTS PATREON, DISCORD ([PRIVATE](https://www.patreon.com/c/flowstateeng/membership)), OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
 </br>
 
 ## 🤝 Contributing
