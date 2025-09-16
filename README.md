@@ -56,14 +56,6 @@ I preesh-y8-cha! 🤗🙌🥰
 
 ---
 
-## [💾 Installation](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Installation)
-
-## [🖧 Current Nodes](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Nodes)
-
-## [🎉 RELEASE v0.1.2](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Releases)
-
----
-
 ## ✒️ Author
 **Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
 </br>
