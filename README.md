@@ -61,13 +61,20 @@ I preesh-y8-cha! 🤗🙌🥰
 **Johnathan Chivington:** [YouTube](https://youtube.com/@flowstateeng), [Patreon](https://www.patreon.com/c/flowstateeng)
 </br>
 
+---
+
 ## 🐞 Issues
-PLEASE MESSAGE YOUR BUG REPORTS PATREON, DISCORD ([PRIVATE](https://www.patreon.com/c/flowstateeng/membership)), OR SUBMIT AN ISSUE ON GITHUB. MERGE/PULL REQUESTS ARE IGNORED.
-</br>
+Please mesage bug reports on Patreon, Discord ([private](https://www.patreon.com/c/flowstateeng/membership)), or submit an issue on GitHub.
+
+**🚨 Pull requests are ignored.**
+
+---
 
 ## 🤝 Contributing
 Not currently accepting outside contributors.
 <br/></br>
+
+---
 
 ## 📄 License
 MIT
