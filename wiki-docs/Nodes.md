@@ -30,6 +30,8 @@ Vary the denoise on your sampler to control the amount of style transfer you wan
 | --- | --- | --- |
 | `Latent Image` | `LATENT` | The latent image batch. |
 
+---
+
 ### [🌊🚒 FlowState Flux Engine](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_FluxEngine.py)
 Streamline your entire generation workflow with the FlowState Flux Engine.
 
