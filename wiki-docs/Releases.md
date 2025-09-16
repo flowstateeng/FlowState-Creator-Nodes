@@ -4,6 +4,13 @@ This page documents the major milestones and releases for the FlowState Creator 
 
 ---
 
+### 🎨 LoRA Integration for 🌊🚒 FlowState Flux Engine
+**Date:** 2025-09-16
+
+Now added `Flux LoRA` styling for the 🌊🚒 FlowState Flux Engine. Simply select `model` & `strength`, or select `none.`
+
+---
+
 ### 📖 Wiki Documentation Created
 **Date:** 2025-09-16
 
@@ -11,7 +18,7 @@ The official wiki documentation for the project was created, providing users wit
 
 ---
 
-###  Checkpoint Integration & Media Updates
+### ✅ Checkpoint Integration & Media Updates
 **Date:** 2025-09-16
 
 This update brought checkpoint integration to the `🌊🚒 FlowState Flux Engine`, allowing for use of bundled checkpoints (e.g., Flux Dev.1 fp8). It also included new media for the Comfy Registry.
@@ -25,14 +32,14 @@ A significant upgrade to the `🌊🚒 FlowState Flux Engine`, integrating `Sage
 
 ---
 
-### 🌊 FlowState Flux Engine - Initial Release
+### 🌊🚒 FlowState Flux Engine - Initial Release
 **Date:** 2025-09-15
 
 The initial release of the `🌊🚒 FlowState Flux Engine`, a powerful tool for transforming and manipulating latent images. This release laid the groundwork for future integrations and features.
 
 ---
 
-### ✨ FlowState Latent Source - Stable Release
+### 🌊🌱 FlowState Latent Source - Stable Release
 **Date:** 2025-09-15
 
 The first major node release since the clean slate initiative. The `🌊🌱 FlowState Latent Source` node provides a stable and reliable way to generate latent images for your workflows.

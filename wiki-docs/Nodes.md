@@ -53,6 +53,8 @@ Reduce your node clutter and go from concept to final image faster than ever wit
 | `model_name` | `STRING` | **Full Diffusion Model List**: List of all available Diffusion Models. |
 | `weight_dtype` | `STRING` | **Weight Datatype (DType)**: The data type to be used for your models weights. |
 | `sage_attention`| `STRING` | **Sage Attention Mode**: The type of Sage Attention to use. |
+| `lora_model`| `STRING` | **LoRA Model**: Select a LoRA model to use. |
+| `lora_strength`| `STRING` | **LoRA Strength**: If using a LoRA, specify strength. |
 | `clip_1_name` | `STRING` | **CLIP / Text Encoder List**: List of available Text Encoders and CLIP models. |
 | `clip_2_name` | `STRING` | **CLIP / Text Encoder List**: List of available Text Encoders and CLIP models. |
 | `vae_name` | `STRING` | **VAE List**: List of available Variational Autoencoders (VAE). |

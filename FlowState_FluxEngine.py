@@ -42,6 +42,8 @@ from nodes import UNETLoader
 from nodes import CheckpointLoaderSimple
 from nodes import DualCLIPLoader
 from nodes import VAELoader
+from nodes import CLIPTextEncode
+from nodes import LoraLoaderModelOnly
 
 from comfy_extras.nodes_custom_sampler import RandomNoise
 from comfy_extras.nodes_custom_sampler import BasicGuider
@@ -49,8 +51,6 @@ from comfy_extras.nodes_custom_sampler import KSamplerSelect
 from comfy_extras.nodes_custom_sampler import BasicScheduler
 from comfy_extras.nodes_custom_sampler import SamplerCustomAdvanced
 from comfy_extras.nodes_flux import FluxGuidance
-
-from nodes import CLIPTextEncode
 
 
 # --- IMPORT KIJAI (THE GOAT) SAGE ATTENTION UNTIL COMFY CORE IMPLEMENTS A NODE
@@ -109,6 +109,8 @@ class FlowState_FluxEngine:
                 'model_name': TYPE_ALL_MODEL_LISTS(),
                 'weight_dtype': TYPE_WEIGHT_DTYPE,
                 'sage_attention': TYPE_SAGE_ATTENTION_MODE,
+                'lora_model': TYPE_LORAS_LIST(),
+                'lora_strength': TYPE_LORA_STRENGTH,
                 'clip_1_name': TYPE_CLIPS_LIST(),
                 'clip_2_name': TYPE_CLIPS_LIST(),
                 'vae_name': TYPE_VAES_LIST(),
@@ -328,13 +330,14 @@ class FlowState_FluxEngine:
         return img_batch_out, latent_batch_out
 
     def execute(
-            self, model_filetype, model_name, weight_dtype, sage_attention, clip_1_name, clip_2_name, vae_name, resolution,
-            orientation, latent_type, custom_width, custom_height, custom_batch_size, image, seed, sampling_algorithm,
-            scheduling_algorithm, guidance, steps, denoise, prompt, input_img=None
+            self, model_filetype, model_name, weight_dtype, sage_attention, lora_model, lora_strength, clip_1_name,
+            clip_2_name, vae_name, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size,
+            image, seed, sampling_algorithm, scheduling_algorithm, guidance, steps, denoise, prompt, input_img=None
         ):
 
         print(
-            f'\n\n 🌊🚒 FlowState Flux Engine'
+            f'\n\n\n  --- START ---\n'
+            f'\n 🌊🚒 FlowState Flux Engine'
             f'\n  - Preparing sampler...'
         )
 
@@ -355,11 +358,14 @@ class FlowState_FluxEngine:
                     f'\n  - Loading {vae_name}...\n'
                 )
 
-            if sage_attention != 'disabled':
-                self.loaded_model = PatchSageAttention.patch(self.loaded_model, sage_attention)[0]
-
         else:
             print(f'  - Models pre-loaded...')
+
+        if sage_attention != 'disabled':
+                self.loaded_model = PatchSageAttention.patch(self.loaded_model, sage_attention)[0]
+
+        if lora_model != 'none':
+            self.loaded_model = LoraLoaderModelOnly().load_lora_model_only(self.loaded_model, lora_model, lora_strength)[0]
 
         latent_batch_in = FlowState_LatentSource().execute(
             resolution, orientation, latent_type, custom_width, custom_height,
@@ -382,6 +388,7 @@ class FlowState_FluxEngine:
             f'\n  - Total Generated Images: {img_batch_out.shape[0]}'
             f'\n  - Output Resolution: {img_batch_out.shape[2]} x {img_batch_out.shape[1]}'
             f'\n  - Generation Time: {sampling_mins}m {sampling_secs}s ({sampling_duration})\n'
+            f'\n\n --- END --- \n\n\n'
         )
 
         return (self.loaded_model, self.loaded_clip, self.loaded_vae, img_batch_out, {'samples': latent_batch_out}, )
