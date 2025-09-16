@@ -4,6 +4,13 @@ This page documents the major milestones and releases for the FlowState Creator 
 
 ---
 
+### 🧠 Sage Attention Fix for 🌊🚒 FlowState Flux Engine
+**Date:** 2025-09-16
+
+Introduced a more flexible strategy for checking the availability of KJNodes, due to varying naming schemas, depending on how the use installed KJNodes.
+
+---
+
 ### 🎨 LoRA Integration for 🌊🚒 FlowState Flux Engine
 **Date:** 2025-09-16
 

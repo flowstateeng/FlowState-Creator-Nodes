@@ -24,7 +24,7 @@ from .FlowState_LatentSource import *
 ##
 # OUTSIDE IMPORTS
 ##
-import time, copy, itertools, math
+import time, copy, itertools, math, re
 
 import torch
 import torchvision.transforms.functional as F
@@ -36,7 +36,6 @@ import importlib
 
 import comfy.utils
 import comfy.sd
-from comfy import model_management
 
 from nodes import UNETLoader
 from nodes import CheckpointLoaderSimple
@@ -55,16 +54,18 @@ from comfy_extras.nodes_flux import FluxGuidance
 
 # --- IMPORT KIJAI (THE GOAT) SAGE ATTENTION UNTIL COMFY CORE IMPLEMENTS A NODE
 SAGE_ATTENTION_INSTALLED = False
-KJNODES_INSTALLED = False
+
+KJNODES_INSTALLED = "PathchSageAttentionKJ" in nodes.NODE_CLASS_MAPPINGS
+
 PatchSageAttention = None
 
-try:
-    kj_module_path = importlib.import_module('custom_nodes.ComfyUI-KJNodes.nodes.model_optimization_nodes')
-    KJNODES_INSTALLED = True
+
+if KJNODES_INSTALLED:
     print('\t   - 🟢 KJ Nodes available.')
-except:
+else:
     print('\t   - 🚨 KJNODES NOT AVAILABLE')
-    
+
+
 try:
     importlib.import_module("sageattention")
     SAGE_ATTENTION_INSTALLED = True
@@ -75,8 +76,15 @@ except:
 if SAGE_ATTENTION_INSTALLED and KJNODES_INSTALLED:
     print('\t   - ✅ KJ Nodes & Sage Attention available.')
     print('\t      - 🥳🎉 Activating Sage Attention for 🌊🚒 FlowState Flux Engine.')
-    PatchSageAttention = kj_module_path.PathchSageAttentionKJ()
-    TYPE_SAGE_ATTENTION_MODE = (kj_module_path.sageattn_modes, TYPE_SAGE_ATTENTION_MODE[1])
+    PatchSageAttention = nodes.NODE_CLASS_MAPPINGS['PathchSageAttentionKJ']()
+    TYPE_SAGE_ATTENTION_MODE = ([
+        "disabled",
+        "auto",
+        "sageattn_qk_int8_pv_fp16_cuda",
+        "sageattn_qk_int8_pv_fp16_triton",
+        "sageattn_qk_int8_pv_fp8_cuda",
+        "sageattn_qk_int8_pv_fp8_cuda++"
+    ], TYPE_SAGE_ATTENTION_MODE[1])
 
 
 ##
@@ -120,7 +128,6 @@ class FlowState_FluxEngine:
                 'custom_width': TYPE_IMG_WIDTH,
                 'custom_height': TYPE_IMG_HEIGHT,
                 'custom_batch_size': TYPE_LATENT_BATCH_SIZE,
-                'image': TYPE_INPUT_FILES(),
                 'seed': TYPE_SEED,
                 'sampling_algorithm': TYPE_SAMPLERS(),
                 'scheduling_algorithm': TYPE_SCHEDULERS(),
@@ -128,6 +135,7 @@ class FlowState_FluxEngine:
                 'steps': TYPE_STEPS,
                 'denoise': TYPE_DENOISE,
                 'prompt': TYPE_PROMPT_POSITIVE,
+                'image': TYPE_INPUT_FILES(),
                 # 'add_params': BOOLEAN_PARAMS,
                 # 'add_prompt': BOOLEAN_PROMPT,
                 # 'show_params_in_terminal': BOOLEAN_PARAMS_TERM,
@@ -342,7 +350,7 @@ class FlowState_FluxEngine:
         )
 
         if self.loaded_model == None:
-            print(f'  - Loading {model_name}...')
+            print(f'  - Loading {model_name}...\n')
             if model_filetype == 'checkpoint':
                 checkpoint = CheckpointLoaderSimple().load_checkpoint(model_name)
                 self.loaded_model = checkpoint[0]
@@ -353,6 +361,7 @@ class FlowState_FluxEngine:
                 self.loaded_clip = DualCLIPLoader().load_clip(clip_1_name, clip_2_name, 'flux', 'default')[0]
                 self.loaded_vae = VAELoader().load_vae(vae_name)[0]
                 print(
+                    f'\n 🌊🚒 FlowState Flux Engine'
                     f'\n  - Loading {clip_1_name}...'
                     f'\n  - Loading {clip_2_name}...'
                     f'\n  - Loading {vae_name}...\n'
