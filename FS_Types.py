@@ -229,6 +229,21 @@ TYPE_IMAGE = ('IMAGE', )
 # FLOWSTATE CREATOR TYPES
 ##
 
+# SAGE ATTENTION
+TYPE_SAGE_ATTENTION_MODE = (['disabled'], {'tooltip': (
+    f' Sage Attention Mode\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The type of Sage Attention to use.\n'
+    f' - This field will only show as "disabled" if you do not have the capability to run Sage Attention.\n\n'
+)})
+
+# MODEL
+TYPE_MODEL_FILE_TYPE = (['solo_model', 'checkpoint'], {'tooltip': (
+    f' Model File Type\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The type of model file to load.\n'
+    f' - Checkpoints (typically for fp8 models) contain the CLIP & VAE.\n'
+    f' - If using a checkpoint, then the weight_dtype, clip_1_name, clip_2_name & vae_name fields will ignored.\n\n'
+)})
+
 # LATENT SOURCE
 TYPE_LATENT_BATCH_SIZE = ('INT', {'default': 1, 'min': 1, 'max': 4096, 'tooltip': (
         f' Custom Batch Size\n {"-" * TOOLTIP_UNDERLINE}\n'
@@ -275,10 +290,8 @@ TYPE_LATENT_SOURCE_ORIENTATION = (['Horizontal', 'Vertical'], {
 })
 TYPE_LATENT_SOURCE_OUT = ('LATENT', )
 
-
 # FLUX ENGINE
 TYPE_FLUX_ENGINE_OUT = ('MODEL', 'CLIP', 'VAE', 'IMAGE', 'LATENT', )
-
 
 
 # --- TO DO ---

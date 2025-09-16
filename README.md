@@ -83,10 +83,13 @@ git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
 
 ---
 
-## 🎉 RELEASE v0.0.1 ● 09/15/25 - 11:30 am (GMT-5)
+## 🎉 RELEASE v0.1.1
 
 ### 📋 Notes
-* Introduction of 🌊🚒 FlowState Flux Engine: a Flux all-in-one. (See full description below.)
+* Introduction of 🌊🌱 FlowState Latent Source
+* Introduction of 🌊🚒 FlowState Flux Engine
+  * Sage Attention integration
+  * Checkpoint integraation
 
 ### 📆 Upcoming
 * LoRA integration for the 🌊🚒 FlowState Flux Engine.

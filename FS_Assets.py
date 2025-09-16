@@ -37,7 +37,7 @@ LORAS_LIST = lambda: folder_paths.get_filename_list('loras')
 SAMPLERS_LIST = lambda: comfy.samplers.KSampler.SAMPLERS
 SCHEDULERS_LIST = lambda: comfy.samplers.KSampler.SCHEDULERS
 
-ALL_MODELS_LIST = lambda: DIFFUSION_MODELS_LIST() + CHECKPOINTS_LIST()
+ALL_MODELS_LIST = lambda: sorted(set(DIFFUSION_MODELS_LIST() + CHECKPOINTS_LIST()))
 
 INPUT_FILES = lambda: get_input_files()
 OUTPUT_FILES = lambda: get_output_files()

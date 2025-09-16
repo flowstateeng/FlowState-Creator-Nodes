@@ -39,6 +39,7 @@ import comfy.sd
 from comfy import model_management
 
 from nodes import UNETLoader
+from nodes import CheckpointLoaderSimple
 from nodes import DualCLIPLoader
 from nodes import VAELoader
 
@@ -51,11 +52,11 @@ from comfy_extras.nodes_flux import FluxGuidance
 
 from nodes import CLIPTextEncode
 
+
 # --- IMPORT KIJAI (THE GOAT) SAGE ATTENTION UNTIL COMFY CORE IMPLEMENTS A NODE
 SAGE_ATTENTION_INSTALLED = False
 KJNODES_INSTALLED = False
 PatchSageAttention = None
-sageattn_modes = ['disabled']
 
 try:
     kj_module_path = importlib.import_module('custom_nodes.ComfyUI-KJNodes.nodes.model_optimization_nodes')
@@ -71,13 +72,11 @@ try:
 except:
     print('\t   - 🚨 SAGE ATTENTION NOT AVAILABLE')
 
-
 if SAGE_ATTENTION_INSTALLED and KJNODES_INSTALLED:
     print('\t   - ✅ KJ Nodes & Sage Attention available.')
     print('\t      - 🥳🎉 Activating Sage Attention for 🌊🚒 FlowState Flux Engine.')
     PatchSageAttention = kj_module_path.PathchSageAttentionKJ()
-    sageattn_modes = kj_module_path.sageattn_modes
-
+    TYPE_SAGE_ATTENTION_MODE = (kj_module_path.sageattn_modes, TYPE_SAGE_ATTENTION_MODE[1])
 
 
 ##
@@ -106,9 +105,10 @@ class FlowState_FluxEngine:
     def INPUT_TYPES(s):
         return {
             'required': {
-                'model_name': TYPE_DIFFUSION_MODELS_LIST(),
+                'model_filetype': TYPE_MODEL_FILE_TYPE,
+                'model_name': TYPE_ALL_MODEL_LISTS(),
                 'weight_dtype': TYPE_WEIGHT_DTYPE,
-                'sage_attention': (sageattn_modes, ),
+                'sage_attention': TYPE_SAGE_ATTENTION_MODE,
                 'clip_1_name': TYPE_CLIPS_LIST(),
                 'clip_2_name': TYPE_CLIPS_LIST(),
                 'vae_name': TYPE_VAES_LIST(),
@@ -328,9 +328,9 @@ class FlowState_FluxEngine:
         return img_batch_out, latent_batch_out
 
     def execute(
-            self, model_name, weight_dtype, sage_attention, clip_1_name, clip_2_name, vae_name, resolution, orientation,
-            latent_type, custom_width, custom_height, custom_batch_size, image, seed, sampling_algorithm, scheduling_algorithm,
-            guidance, steps, denoise, prompt, input_img=None
+            self, model_filetype, model_name, weight_dtype, sage_attention, clip_1_name, clip_2_name, vae_name, resolution,
+            orientation, latent_type, custom_width, custom_height, custom_batch_size, image, seed, sampling_algorithm,
+            scheduling_algorithm, guidance, steps, denoise, prompt, input_img=None
         ):
 
         print(
@@ -339,20 +339,25 @@ class FlowState_FluxEngine:
         )
 
         if self.loaded_model == None:
-            print(
-                f'  - Loading {model_name}...'
-                f'\n  - Loading {clip_1_name}...'
-                f'\n  - Loading {clip_2_name}...'
-                f'\n  - Loading {vae_name}...\n'
-            )
-            if sage_attention != 'disabled':
-                self.loaded_model = UNETLoader().load_unet(model_name, weight_dtype)[0]
-                self.loaded_model = PatchSageAttention.patch(self.loaded_model, sage_attention)[0]
+            print(f'  - Loading {model_name}...')
+            if model_filetype == 'checkpoint':
+                checkpoint = CheckpointLoaderSimple().load_checkpoint(model_name)
+                self.loaded_model = checkpoint[0]
+                self.loaded_clip = checkpoint[1]
+                self.loaded_vae = checkpoint[2]
             else:
                 self.loaded_model = UNETLoader().load_unet(model_name, weight_dtype)[0]
+                self.loaded_clip = DualCLIPLoader().load_clip(clip_1_name, clip_2_name, 'flux', 'default')[0]
+                self.loaded_vae = VAELoader().load_vae(vae_name)[0]
+                print(
+                    f'\n  - Loading {clip_1_name}...'
+                    f'\n  - Loading {clip_2_name}...'
+                    f'\n  - Loading {vae_name}...\n'
+                )
 
-            self.loaded_clip = DualCLIPLoader().load_clip(clip_1_name, clip_2_name, 'flux', 'default')[0]
-            self.loaded_vae = VAELoader().load_vae(vae_name)[0]
+            if sage_attention != 'disabled':
+                self.loaded_model = PatchSageAttention.patch(self.loaded_model, sage_attention)[0]
+
         else:
             print(f'  - Models pre-loaded...')
 
