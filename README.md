@@ -33,7 +33,7 @@ This suite provides streamlined solutions for generating:
 
 ---
 
-## 💸 Sponsorship
+## [💸 Sponsorship](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Sponsorship)
 <div align="center">
 
 ❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership) ● 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng) ● 💸 [Ca$hApp](cash.app/$FlowStateEngineering) ● 💰 [Venmo](account.venmo.com/u/flowstateeng) ● 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN)
@@ -52,82 +52,11 @@ I preesh-y8-cha! 🤗🙌🥰
 
 ---
 
-## 💾 Installation
+## [💾 Installation](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Installation)
 
-### Method 1.
-1. Open the ComfyUI Manager
-2. Click "Custom Nodes Manager"
-3. In the searchbar, search "FlowState Creator Suite"
-4. Click "Install" next to "🌊 FlowState Creator Suite"
+## 🖧 [Current Nodes](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Nodes)
 
-*🚨 DO NOT INSTALL 'FlowState Nodes' AS THAT REPO IS RETIRED. INSTALL '🌊 FlowState Creator Suite' (WITH THE WAVE)*
-
-### Method 2.
-1. Open the ComfyUI Manager
-2. Select "Install via Git URL"
-3. Paste this link: https://github.com/flowstateeng/FlowState-Creator-Nodes.git
-4. Click "Confirm"
-
-### Method 3
-1. Open a terminal or command prompt and navigate to your Custom Nodes folder.
-```bash
-cd /path/to/your/ComfyUI/custom_nodes
-```
-2. Use Git to clone this repository.
-```bash
-git clone https://github.com/flowstateeng/FlowState-Creator-Nodes.git
-```
-</br>
-
-*⚠️ After any of these methods, restart ComfyUI.*
-
----
-
-## 🎉 RELEASE v0.1.2
-
-### 📋 Notes
-* Introduction of 🌊🌱 FlowState Latent Source
-* Introduction of 🌊🚒 FlowState Flux Engine
-  * Sage Attention integration
-  * Checkpoint integraation
-
-### 📆 Upcoming
-* LoRA integration for the 🌊🚒 FlowState Flux Engine.
-* Introduction of FlowState Quick Edit: a two-stage node that performs a rapid base edit and then applies a high-detail refinement pass to the result.
-* Introduction of FlowState Asset Forge: efficiently generate professional-grade assets with maximum control & quality.
-
----
-
-## 🖧 Current Nodes
-### [🌊🌱 FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource.py)
-Simplify your latent options and clean up your workflow with FlowState Latent Source.
-
-A simple switch to select between:
- - an empty latent
- - input image as a latent
- - uploaded image as a latent
- 
-Vary the denoise on your sampler to control the amount of style transfer you want from your input image in your generated images.
-<p align="center">
-  <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Latent%20Source.png' alt='FS Latent Source Image'/>
-</p>
-
-### [🌊🚒 FlowState Flux Engine](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_FluxEngine.py)
-Streamline your entire generation workflow with the FlowState Flux Engine.
-
-An all-in-one node that seamlessly combines:
-- Model, VAE, and CLIP loading (with Model Persistence to prevent subsequent reloads.)
-- Prompt conditioning & guidance.
-- Sage Attention model patching (for users with that capability)
-- The integrated FlowState Latent Source for flexible resolution selection & easy i2i style transfer.
-
-Reduce your node clutter and go from concept to final image faster than ever within a single, powerful engine.
-<p align="center">
-  <img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Flux%20Engine.png' alt='FS Latent Source Image'/>
-</p>
-<br/>
-
-Video tutorials can be found on YouTube at [🌊 FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws) *(Coming Soon)*
+## [🎉 RELEASE v0.1.2](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Releases)
 
 ---
 
