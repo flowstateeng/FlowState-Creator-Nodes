@@ -5,7 +5,8 @@
 # 🌊 FlowState Creator Suite
 Developed by [FlowState](https://www.youtube.com/@flowstateeng), these nodes are for creators who want to move beyond experimentation and into scalable production. Stop spending hours building and tweaking complex graphs for repeatable tasks. The FlowState Creator Suite is purpose-built to deliver consistent, professional-grade results for common creative needs, allowing you to focus on your vision, not the wiring.
 
-## [📖 Docs](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki)
+## 📖 Docs
+View documentation, installation, usage, best practices, release information, and upcoming features [here](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki)
 
 ---
 
@@ -37,7 +38,7 @@ This suite provides streamlined solutions for generating:
 
 ---
 
-## [💸 Sponsorship](https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki/Sponsorship)
+## 💸 Sponsorship
 <div align="center">
 
 ❤️ [Patreon Memberships](https://www.patreon.com/c/flowstateeng/membership) ● 🎁 [Github Sponsors](https://github.com/sponsors/flowstateeng) ● 💸 [Ca$hApp](cash.app/$FlowStateEngineering) ● 💰 [Venmo](account.venmo.com/u/flowstateeng) ● 💵 [Stripe](donate.stripe.com/9AQ3fm04OfqCgiAcMN)
