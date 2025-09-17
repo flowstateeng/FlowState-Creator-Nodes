@@ -36,6 +36,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
 # SYSTEM STATUS
 ##
 for fs_node in NODE_CLASS_MAPPINGS:
-    print(f'\t - ✅ {fs_node}: {NODE_DISPLAY_NAME_MAPPINGS[fs_node]}')
+    print(f'\t - 🟢 {fs_node}: {NODE_DISPLAY_NAME_MAPPINGS[fs_node]}')
 
-print(f'\t - ✅ Mappings Loaded.')
+print(f'\t   - ✅ Mappings Loaded.')

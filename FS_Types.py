@@ -10,8 +10,6 @@
 ##
 from .FS_Assets import *
 from .FS_Constants import *
-from .FS_Types import *
-from .FS_Utils import *
 
 
 ##
@@ -239,11 +237,21 @@ TYPE_IMAGE = ('IMAGE', )
 ##
 
 # SAGE ATTENTION
-TYPE_SAGE_ATTENTION_MODE = (['disabled'], {'tooltip': (
+enabled_sage_modes = [
+    "disabled",
+    "auto",
+    "sageattn_qk_int8_pv_fp16_cuda",
+    "sageattn_qk_int8_pv_fp16_triton",
+    "sageattn_qk_int8_pv_fp8_cuda",
+    "sageattn_qk_int8_pv_fp8_cuda++"
+] if SAGE_ATTENTION_INSTALLED else ['disabled']
+
+TYPE_SAGE_ATTENTION_MODE = (enabled_sage_modes, {'tooltip': (
     f' Sage Attention Mode\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - The type of Sage Attention to use.\n'
     f' - This field will only show as "disabled" if you do not have the capability to run Sage Attention.\n\n'
 )})
+
 
 # MODEL
 TYPE_MODEL_FILE_TYPE = (['solo_model', 'checkpoint'], {'tooltip': (

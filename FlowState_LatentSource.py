@@ -9,16 +9,13 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - ✅ 🌱 Loaded Latent Source')
+print(f'\t - 🟢 🌱 Loaded Latent Source')
 
 
 ##
 # FS IMPORTS
 ##
-from .FS_Assets import *
-from .FS_Constants import *
 from .FS_Types import *
-from .FS_Utils import *
 
 
 ##

@@ -83,6 +83,9 @@ Reduce your node clutter and go from concept to final image faster than ever wit
 | `image` | `IMAGE` | The image batch. |
 | `latent` | `LATENT` | The latent batch. |
 
+**Limitations:**
+* Only tested on core Flux models: Dev, Schnell, Krea, Fill, Chroma, Kontext. Cannot guarantee compatiblity with versions from other developers such as De-Distilled, etc.
+
 <br/>
 
 Video tutorials can be found on YouTube at [🌊 FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws) *(Coming Soon)*
