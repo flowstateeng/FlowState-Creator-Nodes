@@ -1,6 +1,15 @@
-# 🎉 Releases - Current v0.1.2  
+# 🎉 Releases - Current v0.1.5
 
 This page documents the major milestones and releases for the FlowState Creator Nodes project.
+
+---
+
+### 🤏 Minor Importing & Patching Updates
+**Date:** 2025-09-17
+
+Updates to the System Initialization & model loading/patching routines, as well as to the import pipelines.
+* Makes the System Initialization ~0.02s faster.
+* More sophisticated model patching strategy results in better model persistence, which leads to fewer model loads.
 
 ---
 
