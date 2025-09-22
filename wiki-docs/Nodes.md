@@ -11,7 +11,7 @@ A complete video generation pipeline that seamlessly combines:
 - Simplify your complex video workflows and orchestrate the entire generation process within a single, powerful studio.
 
 <p align="center">
-<img width='650' src='https://www.google.com/search?q=https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%2520WAN%2520Studio.png' alt='FS WAN Studio Image'/>
+<img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20WAN%20Studio.png' alt='FS WAN Studio Image'/>
 </p>
 
 **Inputs:**
