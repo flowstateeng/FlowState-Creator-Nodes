@@ -15,7 +15,6 @@ print(f'\t - 🟢 🚒 Loaded Flux Engine.')
 # FS IMPORTS
 ##
 from .FS_Types import *
-from .FlowState_Node import FlowState_Node
 from .FlowState_SimpleLatent import *
 
 
@@ -24,25 +23,11 @@ from .FlowState_SimpleLatent import *
 ##
 import time, copy, math
 
-from nodes import UNETLoader
-from nodes import CheckpointLoaderSimple
-from nodes import DualCLIPLoader
-from nodes import VAELoader
-from nodes import CLIPTextEncode
-from nodes import LoraLoaderModelOnly
-
-from comfy_extras.nodes_custom_sampler import RandomNoise
-from comfy_extras.nodes_custom_sampler import BasicGuider
-from comfy_extras.nodes_custom_sampler import KSamplerSelect
-from comfy_extras.nodes_custom_sampler import BasicScheduler
-from comfy_extras.nodes_custom_sampler import SamplerCustomAdvanced
-from comfy_extras.nodes_flux import FluxGuidance
-
 
 ##
 # NODES
 ##
-class FlowState_FluxEngine(FlowState_Node):
+class FlowState_FluxEngine:
     CATEGORY = 'FlowState Creator Suite/Flux'
     DESCRIPTION = 'Simple sampler for Flux models.'
     FUNCTION = 'execute'
@@ -57,8 +42,6 @@ class FlowState_FluxEngine(FlowState_Node):
     )
 
     def __init__(self):
-        super().__init__('🌊🚒 FlowState Flux Engine')
-
         self.working_model = None
         self.working_model_name = None
         self.sage_patched = False
@@ -287,38 +270,37 @@ class FlowState_FluxEngine(FlowState_Node):
 
         return actions, new_params_stashed_copy
 
-    def prepare_batch(self):
-        self.print_status([('Preparing latent batch...',)])
-        self.latent_batch_in = FlowState_SimpleLatent().execute(
-            self.sampling_params['resolution'],
-            self.sampling_params['orientation'],
-            self.sampling_params['latent_type'],
-            self.sampling_params['custom_width'],
-            self.sampling_params['custom_height'],
-            self.sampling_params['custom_batch_size'],
-            self.working_vae,
-            self.sampling_params['input_img']
-        )[0]
-
     def reset_model(self):
-        self.print_status([('Unloading diffusion model...',)])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Unloading model...'
+        )
         self.working_model = None
         self.working_model_name = None
         self.sage_patched = False
         self.lora_patched = False
 
     def reset_clip(self):
-        self.print_status([('Unloading CLIP...',)])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Unloading CLIP...'
+        )
         self.working_clip = None
         self.working_clip_name = None
 
     def reset_vae(self):
-        self.print_status([('Unloading VAE...',)])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Unloading VAE...'
+        )
         self.working_vae = None
         self.working_vae_name = None
 
     def reset_all(self):
-        self.print_status([('Unloading model, CLIP & VAE...',)])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Unloading model, CLIP & VAE...'
+        )
         self.reset_model()
         self.reset_clip()
         self.reset_vae()
@@ -341,10 +323,11 @@ class FlowState_FluxEngine(FlowState_Node):
             change_clip_msg = 'CHANGING_CLIP' if changing_clip else 'KEEPING_CLIP'
             change_vae_msg = 'CHANGING_VAE' if changing_vae else 'KEEPING_VAE'
 
-            self.print_status([
-                ('Checking change state...',),
-                ('Changing', f'{change_model_msg} & {change_clip_msg} & {change_vae_msg}')
-            ])
+            print(
+                f'\n 🌊🚒 FlowState Flux Engine'
+                f'\n  - Checking change state...'
+                f'\n  - Changing: {change_model_msg} & {change_clip_msg} & {change_vae_msg}\n'
+            )
 
             if changing_model: self.reset_model()
             if changing_clip: self.reset_clip()
@@ -357,10 +340,11 @@ class FlowState_FluxEngine(FlowState_Node):
         clip_state = 'CLIP_LOADED' if self.working_clip != None else 'CLIP_UNLOADED'
         vae_state = 'VAE_LOADED' if self.working_vae != None else 'VAE_UNLOADED'
 
-        self.print_status([
-            ('Checking load state...',),
-            ('Status', f'{model_state} & {clip_state} & {vae_state}')
-        ])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Checking load state...'
+            f'\n  - Status: {model_state} & {clip_state} & {vae_state}\n'
+        )
 
         is_checkpoint = self.sampling_params['model_filetype'] == 'checkpoint'
         model_name = self.sampling_params['model_name']
@@ -427,10 +411,14 @@ class FlowState_FluxEngine(FlowState_Node):
             self.working_vae_name = vae_name
             vae_action = f'Loaded VAE: {vae_name}'
 
-        self.print_status([(model_action,), (clip_action,), (vae_action,)])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - {model_action}'
+            f'\n  - {clip_action}'
+            f'\n  - {vae_action}\n'
+        )
 
     def passthrough(self):
-        self.print_status([('Using input models...',)])
         self.working_model = self.sampling_params['model']
         self.working_model_name = 'input_model'
         self.sage_patched = False
@@ -443,12 +431,18 @@ class FlowState_FluxEngine(FlowState_Node):
         self.working_vae_name = 'input_vae'
 
     def patch_sage(self):
-        self.print_status([('Patching model with Sage Attention', self.sampling_params['sage_attention'])])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Patching model with Sage Attention: {self.sampling_params["sage_attention"]}\n'
+        )
         self.working_model = SageAttention.patch(self.working_model, self.sampling_params['sage_attention'])[0]
         self.sage_patched = True
 
     def patch_lora(self):
-        self.print_status([('Patching model with LoRA', self.sampling_params['lora_model'])])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Patching model with LoRA: {self.sampling_params["lora_model"]}\n'
+        )
         self.working_model = LoraLoaderModelOnly().load_lora_model_only(
             self.working_model, self.sampling_params['lora_model'], self.sampling_params['lora_strength']
         )[0]
@@ -458,26 +452,27 @@ class FlowState_FluxEngine(FlowState_Node):
         sage_state = 'sage_active' if self.sage_patched == True else 'sage_disabled'
         lora_state = 'lora_active' if self.lora_patched == True else 'lora_disabled'
 
-        self.print_status([
-            ('Checking model patch state...',),
-            ('Status', f'{sage_state} & {lora_state}')
-        ])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Checking model patch state...'
+            f'\n  - Status: {sage_state} & {lora_state}\n'
+        )
         need_sage = self.sampling_params['sage_attention'] != 'disabled' and self.sage_patched == False
-        need_lora = self.sampling_params['lora_model'] != 'disabled' and self.lora_patched == False
+        need_lora = self.sampling_params['lora_model'] != 'none' and self.lora_patched == False
 
         need_sage_but_not_lora = need_sage and not need_lora
         need_lora_but_not_sage = need_lora and not need_sage
         need_both = need_sage and need_lora
 
         need_to_remove_sage = self.sampling_params['sage_attention'] == 'disabled' and self.sage_patched == True
-        need_to_remove_lora = self.sampling_params['lora_model'] == 'disabled' and self.lora_patched == True
+        need_to_remove_lora = self.sampling_params['lora_model'] == 'none' and self.lora_patched == True
 
         if need_to_remove_sage or need_to_remove_lora:
             need_to_remove = 'sage & lora' if need_to_remove_lora and need_to_remove_sage else ('sage' if need_to_remove_sage else 'lora')
-            self.print_status([
-                ('Need to remove', need_to_remove),
-                ('Reloading model...',)
-            ])
+            print(
+                f'  - Need to remove: {need_to_remove}'
+                f'\n  - Reloading model...'
+            )
             self.working_model = None
             self.sage_patched = False
             self.lora_patched = False
@@ -493,8 +488,11 @@ class FlowState_FluxEngine(FlowState_Node):
             self.patch_lora()
             self.patch_sage()
 
-    def sample(self):
-        self.print_status([('Sampling...',)])
+    def sample(self, latent_batch_in):
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Sampling...\n'
+        )   
 
         random_noise = RandomNoise().get_noise(self.sampling_params['seed'])[0]
         conditioning = CLIPTextEncode().encode(self.working_clip, self.sampling_params['prompt'])[0]
@@ -506,13 +504,13 @@ class FlowState_FluxEngine(FlowState_Node):
         )[0]
         
         latent_batch_out = SamplerCustomAdvanced().sample(
-            random_noise, guider, sampler, sigmas, self.latent_batch_in
+            random_noise, guider, sampler, sigmas, latent_batch_in
         )[1]['samples']
 
-        self.print_status([
-            ('Sampling Complete.',),
-            ('Decoding Batch', latent_batch_out.shape)
-        ])
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine - Sampling Complete.'
+            f'\n - Decoding Batch: {latent_batch_out.shape}\n'
+        )
 
         img_batch_out = self.working_vae.decode(latent_batch_out)
 
@@ -525,7 +523,11 @@ class FlowState_FluxEngine(FlowState_Node):
             model=None, clip=None, vae=None, input_img=None, latent=None
         ):
 
-        self.print_status([('Preparing sampler...',)], init=True)
+        print(
+            f'\n\n\n  --- START ---\n'
+            f'\n 🌊🚒 FlowState Flux Engine'
+            f'\n  - Preparing sampler...'
+        )
 
         self.sampling_params = locals()
 
@@ -535,19 +537,25 @@ class FlowState_FluxEngine(FlowState_Node):
         else:
             self.passthrough()
     
-        self.prepare_batch()
+        latent_batch_in = FlowState_SimpleLatent().execute(
+            resolution, orientation, latent_type, custom_width, custom_height,
+            custom_batch_size, self.working_vae, input_img
+        )[0]
 
         sampling_start_time = time.time()
 
-        img_batch_out, latent_batch_out = self.sample()
+        img_batch_out, latent_batch_out = self.sample(latent_batch_in)
         
         sampling_duration, sampling_mins, sampling_secs = get_mins_and_secs(sampling_start_time)
 
-        self.print_status([
-            ('Total Generated Images', img_batch_out.shape[0]),
-            ('Output Resolution', f'{img_batch_out.shape[2]} x {img_batch_out.shape[1]}'),
-            ('Generation Time', f'{sampling_mins}m {sampling_secs}s ({sampling_duration}s)')
-        ], end=True)
+        print(
+            f'\n 🌊🚒 FlowState Flux Engine - Decoding complete.'
+            f'\n  - Total Generated Images: {img_batch_out.shape[0]}'
+            f'\n  - Output Resolution: {img_batch_out.shape[2]} x {img_batch_out.shape[1]}'
+            f'\n  - Generation Time: {sampling_mins}m {sampling_secs}s ({sampling_duration})\n'
+            f'\n\n --- END --- \n\n\n'
+        )
 
         return (self.working_model, self.working_clip, self.working_vae, img_batch_out, {'samples': latent_batch_out}, )
+
 

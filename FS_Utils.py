@@ -32,6 +32,9 @@ def get_output_files():
     files = folder_paths.filter_files_content_types(files, ["image"])
     return files
 
+def correct_model_name(name):
+    return name.replace('.sft', '.safetensors')
+
 
 # MODELS
 def get_vae_list():

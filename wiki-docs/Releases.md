@@ -1,6 +1,23 @@
-# 🎉 Releases - Current v0.1.5
+# 🎉 Releases - Current v0.2.0
 
 This page documents the major milestones and releases for the FlowState Creator Nodes project.
+
+---
+
+### 🔥 Major Release - 🌊🎬 FlowState WAN Studio!
+**Date:** 2025-09-22
+
+Introducing 🌊🎬 FlowState WAN Studio, the new flagship node for the FlowState Creator Suite! This is our most advanced node yet, designed to be an all-in-one, comprehensive pipeline for generating high-quality video. It encapsulates a complex, multi-stage workflow into a single, convenient, and powerful interface, saving you time and graph complexity.
+
+* Dual-Model Sampling Pipeline: Utilize two separate UNET models in a sequential workflow. The node intelligently splits the sampling steps, allowing you to use one model for the initial high-noise steps and a second, specialized model for refining low-noise details.
+
+* Advanced LoRA & Model Patching: Get granular control over your model augmentations. Apply separate optimization LoRAs to the high-noise and low-noise stages, patch in an overall style LoRA, and enable Sage Attention, all from within the node.
+
+* Flexible Video Sizing: Easily define your output resolution. Choose from a list of pre-selected aspect ratios, enter custom dimensions, or have the node automatically inherit the resolution from an optional starting frame.
+
+* Complete, Self-Contained Workflow: WAN Studio handles the entire process from start to finish. It manages loading models, encoding prompts, creating the initial latent, patching augmentations, running the two-stage sampling, and decoding the final video.
+
+* Seamless Image-to-Video: By providing an image to the optional starting_frame input, you can guide the video generation process, turning a static image into a dynamic clip with ease.
 
 ---
 

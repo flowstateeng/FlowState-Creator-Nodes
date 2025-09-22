@@ -16,8 +16,3 @@
 * Introduction of FlowState Asset Forge: efficiently generate professional-grade image assets with maximum control & quality.
 
 ---
-
-## 🌊🎥 FlowState Cinema
-* Introduction of FlowState Cinema: efficiently generate video assets for loops, short films/shows, music videos, etc.
-
----
