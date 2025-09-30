@@ -25,6 +25,8 @@ NODE_CLASS_MAPPINGS = {
     'FlowState_LatentSource': FlowState_LatentSource,
     'FlowState_FluxEngine': FlowState_FluxEngine,
     'FlowState_WANStudio': FlowState_WANStudio,
+    'FlowState_Chef': FlowState_Chef,
+    'FlowState_Chef_Ingredients': FlowState_Chef_Ingredients,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -33,7 +35,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     'FlowState_LatentSource': '🌊🌱 FlowState Latent Source',
     'FlowState_FluxEngine': '🌊🚒 FlowState Flux Engine',
     'FlowState_WANStudio': '🌊🎬 FlowState WAN Studio',
-    # 'FlowState_QuickEdit': '🌊 FlowState Quick Edit',
+    'FlowState_Chef': '🌊👩🏻‍🍳 FlowState Chef',
+    'FlowState_Chef_Ingredients': '🌊🥗 FlowState Chef Ingredients',
     # 'FlowState_AssetForge': '🌊 FlowState Asset Forge',
 }
 

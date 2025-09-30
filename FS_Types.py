@@ -128,6 +128,11 @@ TYPE_PROMPT_NEGATIVE = ('STRING', {'multiline': True, 'default': '⛔ Describe w
     f' Positive Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - ⛔ Describe what you do not want to see in the image.\n\n'
 )})
+TYPE_TILED_DECODE = ('BOOLEAN', {'default': False, 'tooltip': (
+    f' Tiiled Decode\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - VAE decoding for large images can be a severe bottleneck.\n\n'
+    f' - Tiled decode helps reduce time by performing decoding on smaller chunks of the image instead of decoding the whole image at once.\n\n'
+)})
 
 # MODEL
 TYPE_MODEL_IN = ('MODEL', {'tooltip': (
@@ -296,6 +301,16 @@ TYPE_FLOWSTATE_LABEL_PROMPT = ('STRING', {'default': pad_label('📝 Prompt(s)')
     f' - This field is not functional. It is just a label for the group of settings below.\n\n'
 )})
 
+TYPE_FLOWSTATE_LABEL_PROMPT_CHEF_QWEN = ('STRING', {'default': pad_label('✏️ Qwen Edit Prompt'), 'tooltip': (
+    f' Label\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - This field is not functional. It is just a label for the group of settings below.\n\n'
+)})
+
+TYPE_FLOWSTATE_LABEL_PROMPT_CHEF_FLUX = ('STRING', {'default': pad_label('✨ Flux Refinement Prompt'), 'tooltip': (
+    f' Label\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - This field is not functional. It is just a label for the group of settings below.\n\n'
+)})
+
 
 ##
 # FLOWSTATE CREATOR GENERIC TYPES
@@ -441,6 +456,12 @@ TYPE_FLUX_ENGINE_OUT = ('MODEL', 'CLIP', 'VAE', 'IMAGE', 'LATENT')
 
 
 ##
+# FLOWSTATE FLUX ENGINE
+##
+TYPE_FLUX_ENGINE_OUT = ('MODEL', 'CLIP', 'VAE', 'MODEL', 'CLIP', 'VAE', 'IMAGE', 'IMAGE')
+
+
+##
 # FLOWSTATE WAN STUDIO
 ##
 TYPE_PROMPT_WAN_STUDIO_POSITIVE = ('STRING', {'multiline': True, 'default': '✅ Describe the video you want WAN to create.', 'tooltip': (
@@ -495,13 +516,23 @@ TYPE_WAN_STUDIO_OUT = ('IMAGE', 'LATENT')
 ##
 # FLOWSTATE QUICK EDIT
 ##
-TYPE_PROMPT_QUICK_EDIT_CHANGES = ('STRING', {'multiline': True, 'default': 'Describe the edits you want Qwen to make.', 'tooltip': (
-    f' Positive Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
-    f' - Describe the edits you want Qwen to make.\n\n'
+TYPE_PROMPT_CHEF_QWEN = ('STRING', {'multiline': True, 'default': '✏️ Describe the edits you want Qwen to make.', 'tooltip': (
+    f' Edit Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - ✏️ Describe the edits you want Qwen to make.\n\n'
 )})
-TYPE_PROMPT_QUICK_EDIT_REFINE = ('STRING', {'multiline': True, 'default': 'Describe the new image after the edits are made.', 'tooltip': (
-    f' Positive Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
-    f' - Describe the new image after the edits are made.\n\n'
+TYPE_PROMPT_CHEF_FLUX = ('STRING', {'multiline': True, 'default': '✨ Describe the final output image after edits are made.', 'tooltip': (
+    f' Refinement Prompt\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - ✨ Describe the final output image after edits are made.\n\n'
 )})
-TYPE_QUICK_EDIT_OUT = ('MODEL', 'CLIP', 'VAE', 'IMAGE', 'LATENT')
+TYPE_REFINE_DENOISE = ('FLOAT', {
+    'default': 0.24, 'min': 0.0, 'max': 1.0, 'step': 0.01,
+    'tooltip': (
+        f' Sampler Denoise Amount\n {"-" * TOOLTIP_UNDERLINE}\n'
+        f' - The amount of denoising applied, lower values will maintain the structure of the initial image allowing for image to image sampling.\n\n'
+    )
+})
+TYPE_CHEF_IMAGE_IN = ('IMAGE', {'tooltip': (
+    f' 🥗 Ingredients Image\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - An image input for the FlowState Chef to work with.\n\n'
+)})
 

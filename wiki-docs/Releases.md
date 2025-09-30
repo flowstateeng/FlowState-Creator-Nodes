@@ -1,6 +1,20 @@
-# 🎉 Releases - Current v0.2.0
+# 🎉 Releases - Current v1.0.0
 
 This page documents the major milestones and releases for the FlowState Creator Nodes project.
+
+---
+
+### 🔥 Major Release - 🌊👩🏻‍🍳 FlowState Chef & Chef Ingredients!
+**Date:** 2025-09-30
+Introducing the 🌊👩🏻‍🍳 FlowState Chef and 🌊🥗 FlowState Chef Ingredients nodes! This is a revolutionary two-stage pipeline designed for powerful, instruction-based image editing and refinement. It combines the advanced image editing capabilities of Qwen with the high-quality refinement of FLUX into a single, cohesive, and incredibly efficient workflow.
+
+* Instruction-Based Image Editing: Use the new dual-prompt system to give direct commands to the Qwen model (e.g., "place the woman on the left, change the man's shirt to blue") and then use a separate, descriptive prompt to guide the final FLUX refinement.
+
+* Multi-Image Composition: The Chef Ingredients node allows you to input up to four separate images, which are automatically stitched together into a single composition, making it easy to create scenes with multiple subjects.
+
+* Intelligent Stage Caching: The Chef node is built for efficiency. It intelligently detects which parameters have changed between runs. If you only adjust a setting in the FLUX refinement stage, the node will skip re-running the initial Qwen edit, saving significant generation time.
+
+* Total Creative Control: As with all FlowState nodes, you have granular control over every aspect of the pipeline, including models, LoRAs, samplers, schedulers, and advanced settings for both the Qwen and FLUX stages.
 
 ---
 

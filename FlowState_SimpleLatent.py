@@ -127,7 +127,7 @@ class FlowState_SimpleLatent(FlowState_Node):
             self.input_latent = self.batch_params['vae'].encode(self.batch_params['input_img'][:,:,:,:3])
             self.set_batch_out('latent from input image', self.input_latent)
 
-    def execute(self, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size, image, vae, input_img=None):
+    def execute(self, resolution, orientation, latent_type, custom_width, custom_height, custom_batch_size, vae, input_img=None):
         self.print_status([('Preparing latent batch...',)], init=True)
 
         batch_start_time = time.time()

@@ -1,7 +1,7 @@
 [project]
 name = "flowstate-creator-nodes"
 description = "The ultimate suite of streamlined ComfyUI nodes for creative professionals."
-version = "0.2.0"
+version = "1.0.0"
 license = {file = "LICENSE"}
 dependencies = []
 
@@ -13,7 +13,7 @@ Documentation = "https://github.com/flowstateeng/FlowState-Creator-Nodes/wiki"
 #  Used by Comfy Registry https://comfyregistry.org
 [tool.comfy]
 PublisherId = "flowstateeng"
-DisplayName = "🌊 FlowState-Creator-Suite"
+DisplayName = "🌊 FlowState Creator Suite"
 Icon = "https://raw.githubusercontent.com/flowstateeng/FlowState-Creator-Nodes/refs/heads/main/imgs/FlowState%20Creator%20Suite%20-%20Comfy%20Registry%20Icon.png"
 Banner = "https://raw.githubusercontent.com/flowstateeng/FlowState-Creator-Nodes/refs/heads/main/imgs/FlowState-Creator-Nodes-Banner.png"
 

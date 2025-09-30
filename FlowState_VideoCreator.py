@@ -1,5 +1,5 @@
 # Project: FlowState Video Creator
-# Description: Simple Creat Video / Save Video combo.
+# Description: Simple Create Video / Save Video combo.
 # Version: 0.0.1
 # Author: Johnathan Chivington
 # Contact: flowstateeng@gmail.com | youtube.com/@flowstateeng
@@ -27,6 +27,7 @@ from comfy_api.latest import ComfyExtension, io, ui
 
 from comfy_extras.nodes_video import CreateVideo
 from comfy_extras.nodes_video import SaveVideo
+
 
 ##
 # NODES
