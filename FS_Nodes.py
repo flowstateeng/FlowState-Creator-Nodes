@@ -19,7 +19,9 @@ from .FlowState_SimpleLatent import *
 from .FlowState_LatentSource import *
 from .FlowState_FluxEngine import *
 from .FlowState_VideoCreator import *
+from .FlowState_VideoPreview import *
 from .FlowState_WANStudio import *
+from .FlowState_WANStudio_Pro import *
 from .FlowState_Chef import *
 from .FlowState_Chef_Ingredients import *
 

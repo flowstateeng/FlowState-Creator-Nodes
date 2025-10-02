@@ -1,5 +1,5 @@
 # **[[Home]]**
-# **[[Installation]]**
+# **[[💾 Installation]]**
 # **Nodes**
 ### [[🌊👩🏻‍🍳 FlowState Chef]]
 ### [[🌊🥗 FlowState Chef Ingredients]]
@@ -7,7 +7,7 @@
 ### [[🌊🌱 FlowState Latent Source]]
 ### [[🌊👌 FlowState Simple Latent]]
 ### [[🌊🎥 FlowState Video Creator]]
-### [[🌊🎬 FlowState WAN Studio]]
-# **[[Releases]]**
-# **[[Sponsorship]]**
-# **[[Upcoming]]**
+### [[🌊🍿 FlowState WAN Studio]]
+# **[[🎉 Releases]]**
+# **[[💸 Sponsorship]]**
+# **[[📆 Upcoming]]**

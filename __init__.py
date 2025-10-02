@@ -72,6 +72,5 @@ from .FS_Mappings import *
 ##
 load_duration, load_mins, load_secs = get_mins_and_secs(load_start_time)
 
-print(
-    f'  4. 🚀 System fully loaded in {round(load_duration, 4)}s\n'
-)
+print(f'  4. 🚀 System fully loaded in {round(load_duration, 4)}s\n')
+

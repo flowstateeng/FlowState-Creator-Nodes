@@ -8,7 +8,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 🎥 Loaded Video Creator.')
+print(f'\t - 🟢 🎥 Loaded FlowState Video Creator.')
 
 
 ##
@@ -93,7 +93,7 @@ class FlowState_VideoCreator(FlowState_Node):
         self.save_video()
 
         create_start_time = time.time()
-        
+
         create_duration, create_mins, create_secs = get_mins_and_secs(create_start_time)
 
         self.print_status([

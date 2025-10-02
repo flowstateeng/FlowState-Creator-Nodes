@@ -10,6 +10,8 @@
 ##
 import os, sys, time
 
+from datetime import datetime
+
 
 ##
 # FS IMPORTS
@@ -63,7 +65,7 @@ class FlowState_Node:
         if init:
             print(f'\n\n\n  --- STARTING {self.node_name} ---')
 
-        print(f'\n\n')
+        print(f'\n')
 
         if error: print('-' * 100)
 
@@ -89,4 +91,37 @@ class FlowState_Node:
         mins = int(duration // 60)
         secs = int(duration - mins * 60)
         return round(duration, 4), mins, secs
+
+    def check_tensor_equality(self, t1, t2, tensor_type='image'):
+        self.print_status([(f'Checking Tensor ({tensor_type}) Equality...',)])
+
+        has_t1 = t1 != None
+        has_t2 = t2 != None
+
+        has_neither = not has_t1 and not has_t2
+        has_t2_but_not_t1 = has_t2 and not has_t1
+        has_t1_but_not_t2 = has_t1 and not has_t2
+        one_missing = has_t2_but_not_t1 or has_t1_but_not_t2
+
+        if one_missing:
+            return False
+        
+        if has_neither:
+            return True
+
+        same_shape = t1.shape == t2.shape
+
+        if not same_shape:
+            return False
+        
+        if same_shape:
+            equal_tensors = t1.equal(t2)
+
+            if not equal_tensors:
+                return False
+        
+        return True
+
+    def get_formatted_time(self):
+        return datetime.now().strftime('%Y-%m-%d %H-%M-%S.%f')[:-3]
 

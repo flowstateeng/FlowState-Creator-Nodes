@@ -9,7 +9,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 👌 Loaded Simple Latent.')
+print(f'\t - 🟢 👌 Loaded FlowState Simple Latent.')
 
 
 ##

@@ -8,7 +8,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 🥗 Loaded Chef Ingredients.')
+print(f'\t - 🟢 🥗 Loaded FlowState Chef Ingredients.')
 
 
 ##

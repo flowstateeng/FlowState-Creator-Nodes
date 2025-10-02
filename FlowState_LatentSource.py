@@ -9,7 +9,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 🌱 Loaded Latent Source.')
+print(f'\t - 🟢 🌱 Loaded FlowState Latent Source.')
 
 
 ##

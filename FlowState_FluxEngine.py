@@ -8,7 +8,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 🚒 Loaded Flux Engine.')
+print(f'\t - 🟢 🚒 Loaded FlowState Flux Engine.')
 
 
 ##

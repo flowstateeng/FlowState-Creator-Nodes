@@ -8,7 +8,7 @@
 ##
 # OUTSIDE IMPORTS
 ##
-import os, folder_paths, importlib
+import importlib
 import nodes
 
 
@@ -18,7 +18,7 @@ import nodes
 
 # SYSTEM INFO
 SYSTEM_NAME = 'FlowState Creator Suite'
-SYSTEM_VERSION = '0.1.5'
+SYSTEM_VERSION = '1.0.1'
 
 # IMAGE PARAMETERS
 MAX_RESOLUTION=16384
@@ -32,8 +32,8 @@ SAGE_ATTENTION_INSTALLED = False
 
 KJNODES_INSTALLED = "PathchSageAttentionKJ" in nodes.NODE_CLASS_MAPPINGS
 
+SAGE_AVAILABLE = False
 SageAttention = None
-
 
 try:
     importlib.import_module("sageattention")
@@ -42,4 +42,5 @@ except:
     SAGE_ATTENTION_INSTALLED = False
 
 if SAGE_ATTENTION_INSTALLED and KJNODES_INSTALLED:
+    SAGE_AVAILABLE = True
     SageAttention = nodes.NODE_CLASS_MAPPINGS['PathchSageAttentionKJ']()

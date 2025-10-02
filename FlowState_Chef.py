@@ -8,7 +8,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 👩🏻‍🍳 Loaded Chef.')
+print(f'\t - 🟢 👩🏻‍🍳 Loaded FlowState Chef.')
 
 
 ##

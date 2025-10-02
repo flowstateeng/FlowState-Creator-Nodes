@@ -8,7 +8,7 @@
 ##
 # SYSTEM STATUS
 ##
-print(f'\t - 🟢 🎬 Loaded WAN Studio.')
+print(f'\t - 🟢 🍿 Loaded FlowState WAN Studio.')
 
 
 ##
@@ -21,7 +21,7 @@ from .FlowState_Node import FlowState_Node
 ##
 # OUTSIDE IMPORTS
 ##
-import time
+import time, random, types
 
 from nodes import UNETLoader
 from nodes import CLIPLoader
@@ -32,6 +32,9 @@ from nodes import KSamplerAdvanced
 from nodes import VAEDecodeTiled
 
 from comfy_extras.nodes_wan import WanImageToVideo
+from comfy_extras.nodes_video import CreateVideo
+from comfy_extras.nodes_video import SaveVideo
+
 
 ##
 # NODES
@@ -41,14 +44,11 @@ class FlowState_WANStudio(FlowState_Node):
     DESCRIPTION = 'All-in-one WAN Video.'
     FUNCTION = 'execute'
     RETURN_TYPES = TYPE_WAN_STUDIO_OUT
-    RETURN_NAMES = ('frames', 'latent', )
-    OUTPUT_TOOLTIPS = (
-        'The batch of image frames.',
-        'The batch of latent frames.',
-    )
+    RETURN_NAMES = ('video', )
+    OUTPUT_TOOLTIPS = ('The created video.', )
 
     def __init__(self):
-        super().__init__('🌊🎬 FlowState WAN Studio')
+        super().__init__('🌊🍿 FlowState WAN Studio')
 
         self.working_high_noise_model = None
         self.working_low_noise_model = None
@@ -59,9 +59,28 @@ class FlowState_WANStudio(FlowState_Node):
         self.latent_batch_in = None
         self.stage_1_latent_batch_out = None
         self.stage_2_latent_batch_out = None
-        self.video_batch_out = None
+        self.frames_batch_out = None
 
+        self.weight_dtype = 'default'
+
+        self.normal_steps = 4
+        self.high_steps = 8
+
+        self.noise_seed = 32
+        self.sampling_algorithm = 'euler'
+        self.scheduling_algorithm = 'simple'
+
+        self.video_format = 'mp4'
+        self.video_codec = 'h264'
+
+        self.neg_prompt = 'blurring, warping, blurred, morphing'
+
+        self.created_video = None
+
+        self.prev_params = None
         self.sampling_params = None
+
+        self.first_run = True
 
         self.stage_params = {
             'high': {
@@ -90,10 +109,8 @@ class FlowState_WANStudio(FlowState_Node):
                 'model_label': TYPE_FLOWSTATE_LABEL_MODEL,
                 'high_noise_model_name': TYPE_DIFFUSION_MODELS_LIST(),
                 'low_noise_model_name': TYPE_DIFFUSION_MODELS_LIST(),
-                'weight_dtype': TYPE_WEIGHT_DTYPE,
                 # MODEL AUGMENTATION SETTINGS
                 'aumentation_label': TYPE_FLOWSTATE_LABEL_AUG,
-                'sage_attention': TYPE_SAGE_ATTENTION_MODE,
                 'high_noise_lora': TYPE_LORAS_LIST(),
                 'low_noise_lora': TYPE_LORAS_LIST(),
                 'style_lora': TYPE_LORAS_LIST(),
@@ -108,30 +125,82 @@ class FlowState_WANStudio(FlowState_Node):
                 'custom_width': TYPE_IMG_WIDTH,
                 'custom_height': TYPE_IMG_HEIGHT,
                 'num_video_frames': TYPE_NUM_VIDEO_FRAMES,
-                # SAMPLING PARAMETERS
-                'sampling_label': TYPE_FLOWSTATE_LABEL_SAMPLING,
-                'seed': TYPE_SEED,
-                'sampling_algorithm': TYPE_SAMPLERS(),
-                'scheduling_algorithm': TYPE_SCHEDULERS(),
-                'steps': TYPE_STEPS,
-                'tiled_decode': TYPE_TILED_DECODE,
+                'fixed_output': TYPE_SEED_SELECT,
+                # FILE SETTINGS
+                'save_label': TYPE_FLOWSTATE_LABEL_SAVING,
+                'fps': TYPE_FPS,
+                'save_video': TYPE_BOOLEAN_SAVE_VIDEO,
+                'filename_prefix': TYPE_WAN_STUDIO_FILENAME_PREFIX,
                 # PROMPT
                 'prompt_label': TYPE_FLOWSTATE_LABEL_PROMPT,
                 'pos_prompt': TYPE_PROMPT_WAN_STUDIO_POSITIVE,
-                'neg_prompt': TYPE_PROMPT_WAN_STUDIO_NEGATIVE,
             },
             'optional': {
                 'starting_frame': TYPE_WAN_STUDIO_STARTING_FRAME,
-                'clip_vision': TYPE_WAN_CLIP_VISION,
+                'audio': TYPE_AUDIO_IN,
+            },
+            'hidden': {
+                'prompt': 'PROMPT',
+                'extra_pnginfo': 'EXTRA_PNGINFO'
             }
         }
 
+    # VERIFICATION
+    def check_stage_params(self):
+        stages = ['sampling', 'creation', 'saving']
+
+        if self.first_run:
+            return stages, ['FIRST_RUN']
+
+        self.print_status([(f'Checking Stage Params...',)])
+
+        stage_params = {
+            'sampling': [
+                'high_noise_model_name', 'low_noise_model_name', 'high_noise_lora', 'low_noise_lora',
+                'style_lora', 'clip_name', 'vae_name', 'resolution', 'orientation', 'custom_width',
+                'custom_height', 'num_video_frames', 'pos_prompt', 'starting_frame', 'audio', 'fixed_output'
+            ],
+            'creation': ['fps'],
+            'saving': ['save_video', 'filename_prefix']
+        }
+        stage_params['creation'] += stage_params['sampling']
+        stage_params['saving'] += stage_params['creation']
+
+        changed_params = []
+        stages_to_run = []
+
+        for stage in stages:
+            # self.print_status([('CHECKING STAGE', stage)])
+            this_stage_params = stage_params[stage]
+
+            for param in this_stage_params:
+                # self.print_status([('CHECKING PARAM', param)])
+                old_param = self.prev_params[param]
+                new_param = self.sampling_params[param]
+
+                is_media = param in ['starting_frame', 'audio']
+
+                if is_media:
+                    equal_inputs = self.check_tensor_equality(old_param, new_param, param)
+                    if not equal_inputs:
+                        changed_params.append(param)
+                        stages_to_run.append(stage)
+                else:
+                    param_changed = old_param != new_param
+                    if param_changed:
+                        changed_params.append(param)
+                        stages_to_run.append(stage)
+
+        deduped_stages = list(set(stages_to_run))
+        deduped_params = list(set(changed_params))
+        return deduped_stages, deduped_params
+
+    # INITIALIZATION METHODS
     def set_stage_parameters(self):
-        total_steps = self.sampling_params['steps']
-        middle_step = total_steps // 2
+        middle_step = self.normal_steps // 2
         self.stage_params['high']['end_at_step'] = middle_step
         self.stage_params['low']['start_at_step'] = middle_step
-        self.stage_params['low']['end_at_step'] = total_steps
+        self.stage_params['low']['end_at_step'] = self.normal_steps
 
     def set_video_parameters(self):
         horizontal_vid = self.sampling_params['orientation'] == 'Horizontal'
@@ -142,6 +211,11 @@ class FlowState_WANStudio(FlowState_Node):
 
         self.width_to_use = self.sampling_params['custom_width']
         self.height_to_use = self.sampling_params['custom_height']
+
+        if self.sampling_params['fixed_output'] == False:
+            self.sampling_params['noise_seed'] = random.randint(-sys.maxsize, sys.maxsize)
+        else:
+            self.sampling_params['noise_seed'] = self.noise_seed
 
         if using_preselected:
             res_split = self.sampling_params['resolution'].split(' - ')[0].split('x')
@@ -161,13 +235,14 @@ class FlowState_WANStudio(FlowState_Node):
             ('Video width', self.width_to_use),
             ('Video height', self.height_to_use),
             ('Video frames', self.sampling_params["num_video_frames"]),
-            ('Batch size', self.batch_size)
+            (f'Fixed output ({self.sampling_params["fixed_output"]})', self.sampling_params['noise_seed'])
         ])
 
+    # ENCODING METHODS
     def handle_text_encoding(self):
         self.print_status([('Encoding text prompts.',)])
         self.pos_conditioning = CLIPTextEncode().encode(self.working_clip, self.sampling_params['pos_prompt'])[0]
-        self.neg_conditioning = CLIPTextEncode().encode(self.working_clip, self.sampling_params['neg_prompt'])[0]
+        self.neg_conditioning = CLIPTextEncode().encode(self.working_clip, self.neg_prompt)[0]
 
     def handle_encoding(self):
         self.handle_text_encoding()
@@ -182,7 +257,7 @@ class FlowState_WANStudio(FlowState_Node):
             self.sampling_params['num_video_frames'],
             self.batch_size,
             self.sampling_params['starting_frame'],
-            clip_vision_output=self.sampling_params['clip_vision']
+            clip_vision_output=None
         )
 
         self.pos_conditioning = pos
@@ -197,18 +272,15 @@ class FlowState_WANStudio(FlowState_Node):
 
         decoding_start = time.time()
 
-        if self.sampling_params['tiled_decode'] == True:
-            self.print_status([('Using Tiled Decoding...',)])
-            self.video_batch_out = VAEDecodeTiled().decode(
-                self.working_vae,
-                self.stage_2_latent_batch_out,
-                tile_size=512,
-                overlap=64,
-                temporal_size=64,
-                temporal_overlap=8
-            )[0]
-        else:
-            self.video_batch_out = self.working_vae.decode(self.stage_2_latent_batch_out['samples'])[0]
+        self.print_status([('Using Tiled Decoding...',)])
+        self.frames_batch_out = VAEDecodeTiled().decode(
+            self.working_vae,
+            self.stage_2_latent_batch_out,
+            tile_size=512,
+            overlap=64,
+            temporal_size=64,
+            temporal_overlap=8
+        )[0]
 
         decoding_duration, decoding_mins, decoding_secs = get_mins_and_secs(decoding_start)
 
@@ -216,10 +288,10 @@ class FlowState_WANStudio(FlowState_Node):
             ('Decoding Time', f'{decoding_mins}m {decoding_secs}s ({decoding_duration})')
         ])
 
+    # LOADING & PATCHING METHODS
     def handle_loading(self):
         high_noise_model = self.sampling_params['high_noise_model_name']
         low_noise_model = self.sampling_params['low_noise_model_name']
-        weight_dtype = self.sampling_params['weight_dtype']
 
         self.print_status([
             ('Loading high noise model', high_noise_model),
@@ -228,13 +300,13 @@ class FlowState_WANStudio(FlowState_Node):
             ('Loading VAE', self.sampling_params['vae_name'])
         ])
 
-        self.working_high_noise_model = UNETLoader().load_unet(high_noise_model, weight_dtype)[0]
-        self.working_low_noise_model = UNETLoader().load_unet(low_noise_model, weight_dtype)[0]
+        self.working_high_noise_model = UNETLoader().load_unet(high_noise_model, self.weight_dtype)[0]
+        self.working_low_noise_model = UNETLoader().load_unet(low_noise_model, self.weight_dtype)[0]
         self.working_clip = CLIPLoader().load_clip(self.sampling_params['clip_name'], 'wan', 'default')[0]
         self.working_vae = VAELoader().load_vae(self.sampling_params['vae_name'])[0]
 
     def patch_sage(self):
-        sage_mode = self.sampling_params['sage_attention']
+        sage_mode = 'sageattn_qk_int8_pv_fp8_cuda++'
         self.print_status([('Patching models with Sage Attention', sage_mode)])
 
         self.working_high_noise_model = SageAttention.patch(self.working_high_noise_model, sage_mode)[0]
@@ -266,14 +338,15 @@ class FlowState_WANStudio(FlowState_Node):
             )[0]
 
     def handle_patching(self):
-        need_sage = self.sampling_params['sage_attention'] != 'disabled'
+        sage_status = 'enabled' if SAGE_AVAILABLE else 'disabled'
+
         need_high_noise_lora = self.sampling_params['high_noise_lora'] != 'disabled'
         need_low_noise_lora = self.sampling_params['low_noise_lora'] != 'disabled'
         need_style_lora = self.sampling_params['style_lora'] != 'disabled'
 
         self.print_status([
             ('Checking model patch state...',),
-            ('Sage Status', self.sampling_params['sage_attention']),
+            ('Sage Status', sage_status),
             ('High-Noise Optimization LoRA Status', self.sampling_params['high_noise_lora']),
             ('Low-Noise Optimization LoRA Status', self.sampling_params['low_noise_lora']),
             ('Style LoRA Status', self.sampling_params['style_lora']),
@@ -282,8 +355,32 @@ class FlowState_WANStudio(FlowState_Node):
         if need_high_noise_lora: self.patch_lora('high')
         if need_low_noise_lora: self.patch_lora('low')
         if need_style_lora: self.patch_lora('both')
-        if need_sage: self.patch_sage()
+        if SAGE_AVAILABLE: self.patch_sage()
 
+    # SAVE VIDEO
+    def create_video(self):
+        self.created_video = CreateVideo.execute(
+            self.frames_batch_out,
+            self.sampling_params['fps'],
+            self.sampling_params['audio']
+        )[0]
+    
+    def save_video_file(self):
+        full_filename = self.sampling_params['filename_prefix'] + ' - ' + self.get_formatted_time()
+
+        hidden = types.SimpleNamespace()
+        hidden.prompt = self.sampling_params['prompt']
+        hidden.extra_pnginfo = self.sampling_params['extra_pnginfo']
+        SaveVideo.hidden = hidden
+
+        SaveVideo.execute(
+            self.created_video,
+            full_filename,
+            self.video_format,
+            self.video_codec
+        )
+
+    # SAMPLING METHODS
     def sample(self, stage):
         self.print_status([('Sampling Stage', stage)])
 
@@ -297,11 +394,11 @@ class FlowState_WANStudio(FlowState_Node):
         latent_batch_out = KSamplerAdvanced().sample(
             stages[stage][0],
             self.stage_params[stage]['add_noise'],
-            self.sampling_params['seed'],
-            self.sampling_params['steps'],
+            self.sampling_params['noise_seed'],
+            self.normal_steps,
             self.stage_params[stage]['cfg'],
-            self.sampling_params['sampling_algorithm'],
-            self.sampling_params['scheduling_algorithm'],
+            self.sampling_algorithm,
+            self.scheduling_algorithm,
             self.pos_conditioning,
             self.neg_conditioning,
             stages[stage][1],
@@ -323,11 +420,61 @@ class FlowState_WANStudio(FlowState_Node):
             ('Sampling Stage Time', f'{sampling_mins}m {sampling_secs}s ({sampling_duration})')
         ])
 
-    def execute(
-            self, model_label, high_noise_model_name, low_noise_model_name, weight_dtype, aumentation_label, sage_attention,
-            high_noise_lora, low_noise_lora, style_lora, encoders_label, clip_name, vae_name, video_label, resolution,
-            orientation, custom_width, custom_height, num_video_frames, sampling_label, seed, sampling_algorithm,
-            scheduling_algorithm, steps, tiled_decode, prompt_label, pos_prompt, neg_prompt, starting_frame=None, clip_vision=None
+    def run_stages(self):
+        # CHECK STAGES TO RUN
+        stages_to_run, changed_params = self.check_stage_params()
+
+        self.print_status([
+            ('Stages to run', stages_to_run),
+            ('Changed params', changed_params)
+        ])
+
+        # SAMPLING STAGE
+        if 'sampling' in stages_to_run:
+            self.handle_loading()
+            self.handle_encoding()
+            self.handle_patching()
+            self.sample('high')
+            self.sample('low')
+            self.handle_decoding()
+
+        # VIDEO CREATION STAGE
+        if 'creation' in stages_to_run:
+            self.create_video()
+
+        # OPTIONAL SAVE STAGE
+        if 'saving' in stages_to_run:
+            old_state = None if self.first_run else self.prev_params['save_video']
+            new_state = self.sampling_params['save_video']
+
+            self.print_status([
+                ('Save state changed...', ),
+                ('Old', old_state),
+                ('New', new_state)
+            ])
+
+            need_to_save = new_state == True
+            if need_to_save:
+                self.save_video_file()
+
+        self.prev_params = self.sampling_params
+        self.first_run = False
+
+    # MAIN
+    def execute(self,
+            model_label, high_noise_model_name, low_noise_model_name,
+
+            aumentation_label, high_noise_lora, low_noise_lora, style_lora,
+
+            encoders_label, clip_name, vae_name,
+
+            video_label, resolution, orientation, custom_width, custom_height, num_video_frames, fixed_output,
+
+            save_label, fps, save_video, filename_prefix,
+
+            prompt_label, pos_prompt,
+
+            starting_frame=None, audio=None, prompt=None, extra_pnginfo=None
         ):
 
         # PRINT SYSTEM STATUS
@@ -341,24 +488,19 @@ class FlowState_WANStudio(FlowState_Node):
         # SAMPLING START TIME
         sampling_start = time.time()
 
-        # SAMPLING PIPELINE
-        self.handle_loading()
-        self.handle_encoding()
-        self.handle_patching()
-        self.sample('high')
-        self.sample('low')
-        self.handle_decoding()
-     
+        # RUN SAMPLING STAGES
+        self.run_stages()
+
         # SAMPLING END
         sampling_duration, sampling_mins, sampling_secs = get_mins_and_secs(sampling_start)
 
         # PRINT SYSTEM STATUS
         self.print_status([
             ('Video generation complete.',),
-            ('Video Frames', self.video_batch_out.shape[0]),
-            ('Output Resolution', f'{self.video_batch_out.shape[2]} x {self.video_batch_out.shape[1]}'),
+            ('Video Frames', self.frames_batch_out.shape[0]),
+            ('Output Resolution', f'{self.frames_batch_out.shape[2]} x {self.frames_batch_out.shape[1]}'),
             ('Generation Time', f'{sampling_mins}m {sampling_secs}s ({sampling_duration}s)')
         ], end=True)
 
-        return (self.video_batch_out, self.stage_2_latent_batch_out)
+        return (self.created_video, )
 

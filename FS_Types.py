@@ -86,6 +86,12 @@ TYPE_IMG_HEIGHT = ('INT', {'default': 1024, 'min': 16, 'max': nodes.MAX_RESOLUTI
     f' - Defines the height of the image.\n\n'
 )})
 
+# VIDEO
+TYPE_VIDEO_IN = ('VIDEO', {'tooltip': (
+    f' Video Input\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The video input.\n\n'
+)})
+
 # LATENT
 TYPE_LATENT_IN = ('LATENT', {'tooltip': (
     f' Latent Image\n {"-" * TOOLTIP_UNDERLINE}\n'
@@ -291,6 +297,11 @@ TYPE_FLOWSTATE_LABEL_VIDEO = ('STRING', {'default': pad_label('🎥 Video Settin
     f' - This field is not functional. It is just a label for the group of settings below.\n\n'
 )})
 
+TYPE_FLOWSTATE_LABEL_SAVING = ('STRING', {'default': pad_label('💾 File Save Settings'), 'tooltip': (
+    f' Label\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - This field is not functional. It is just a label for the group of settings below.\n\n'
+)})
+
 TYPE_FLOWSTATE_LABEL_SAMPLING = ('STRING', {'default': pad_label('🧪 Sampling Settings'), 'tooltip': (
     f' Label\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - This field is not functional. It is just a label for the group of settings below.\n\n'
@@ -316,6 +327,11 @@ TYPE_FLOWSTATE_LABEL_PROMPT_CHEF_FLUX = ('STRING', {'default': pad_label('✨ Fl
 # FLOWSTATE CREATOR GENERIC TYPES
 ##
 
+# BOOLEAN
+TYPE_SEED_SELECT = ('BOOLEAN', {'default': True, 'tooltip': (
+    f' Fixed Output\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Choose to get the same output every time or get variations.\n\n'
+)})
 
 # SAGE ATTENTION
 enabled_sage_modes = [
@@ -344,36 +360,28 @@ TYPE_MODEL_FILE_TYPE = (['solo_model', 'checkpoint'], {'tooltip': (
 
 
 # VIDEO
-TYPE_NUM_VIDEO_FRAMES = ('INT', {'default': 48, 'min': 1, 'max': nodes.MAX_RESOLUTION, 'step': 1, 'tooltip': (
+TYPE_NUM_VIDEO_FRAMES = ('INT', {'default': 25, 'min': 1, 'max': nodes.MAX_RESOLUTION, 'step': 1, 'tooltip': (
     f' Number of Video Frames\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - The number of frames you want in your final video.\n\n'
 )})
-
-
-##
-# FLOWSTATE VIDEO CREATOR
-##
 TYPE_FPS = ('INT', {'default': 12, 'min': 1, 'max': 120, 'tooltip': (
     f' Frames Per Second\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - The number of frames per second in the created video.\n\n'
-)})
-TYPE_FRAMES_IN = ('IMAGE', {'tooltip': (
-    f' Video Frames\n {"-" * TOOLTIP_UNDERLINE}\n'
-    f' - The frames used to create the video.\n\n'
 )})
 TYPE_AUDIO_IN = ('AUDIO', {'tooltip': (
     f' Video Audio\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - Optional audio to be added to the video.\n\n'
 )})
-TYPE_FILENAME_PREFIX = ('STRING', {'default': 'video/ComyUI', 'tooltip': (
-    f' Filename Prefix\n {"-" * TOOLTIP_UNDERLINE}\n'
-    f' - The prefix for the file to save.\n'
-    f' - This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes.\n\n'
-)})
 TYPE_VIDEO_FORMAT = (['mp4', 'auto'], {
     'tooltip': (
         f' Video Format\n {"-" * TOOLTIP_UNDERLINE}\n'
         f' - The format to save the video as.\n\n'
+    )
+})
+TYPE_SAVE_VIDEO_TYPE = (['mp4', 'gif'], {
+    'tooltip': (
+        f' Video Save Type\n {"-" * TOOLTIP_UNDERLINE}\n'
+        f' - Save the video as an MP4 or a GIF.\n\n'
     )
 })
 TYPE_VIDEO_CODEC = (['h264', 'auto'], {
@@ -382,6 +390,26 @@ TYPE_VIDEO_CODEC = (['h264', 'auto'], {
         f' - The codec to use for the video.\n\n'
     )
 })
+TYPE_FRAMES_IN = ('IMAGE', {'tooltip': (
+    f' Video Frames\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The frames used to create the video.\n\n'
+)})
+TYPE_BOOLEAN_SAVE_VIDEO = ('BOOLEAN', {'default': False, 'tooltip': (
+    f' Save Video\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - Choose whether to save the video.\n\n'
+)})
+TYPE_FILENAME_PREFIX = ('STRING', {'default': 'video/WANStudio', 'tooltip': (
+    f' Filename Prefix\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The prefix for the file to save.\n'
+    f' - This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes.\n\n'
+)})
+
+
+##
+# FLOWSTATE VIDEO CREATOR
+##
+
+# NONE
 
 
 ##
@@ -510,7 +538,13 @@ TYPE_WAN_CLIP_VISION = ('CLIP_VISION', {'tooltip': (
     f' CLIP Vision Output\n {"-" * TOOLTIP_UNDERLINE}\n'
     f' - Optionally, use a CLIP Vision model.\n\n'
 )})
-TYPE_WAN_STUDIO_OUT = ('IMAGE', 'LATENT')
+TYPE_WAN_STUDIO_OUT = ('VIDEO', )
+TYPE_WAN_STUDIO_FILENAME_PREFIX = ('STRING', {'default': 'video/FlowState_WANStudio', 'tooltip': (
+    f' Filename Prefix\n {"-" * TOOLTIP_UNDERLINE}\n'
+    f' - The prefix for the file to save.\n'
+    f' - This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes.\n'
+    f' - This is ignored if you choose not to save the video.\n\n'
+)})
 
 
 ##
