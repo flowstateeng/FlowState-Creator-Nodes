@@ -23,6 +23,10 @@ I don't know why this isn't already a node.
 | --- | --- | --- |
 | `None` | `NONE` | There is no output for this node. |
 
+---
+
+*⚠️ This functionality will be built into all video generation nodes going forward, but this node remains in case you want it for something else.*
+
 <br/>
 
 Video tutorials can be found on YouTube at [🌊 FlowState Creator Suite Playlist](https://www.youtube.com/playlist?list=PLopF-DMGUFkTulZRkSpRmKFcTENKFicws) *(Coming Soon)*

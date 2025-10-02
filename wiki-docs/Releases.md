@@ -8,7 +8,7 @@ This page documents the major milestones and releases for the FlowState Creator 
 
 ### 🤏 Moderate Release - WAN Studio Redesign & 🌊📺 FlowState Video Preview Introduction
 **Date:** 2025-10-02
-* The new WAN Studio is completely streamlined and simplified. Any settings that are never tweaked - GONE. All useless settings are managed undert the hood. How frequently do you actually change the sampling and scheduling algorithms or the weight_dtype? Basically never. No need to see it, it's now tucked away. I will re-release the the full version of WAN Studio with all the settings exposed for you absolute nerds though under the name WAN Studio Pro. Expect that tonight/tomorrow.
+* The new WAN Studio is completely streamlined and simplified. Any settings that are never tweaked - GONE. All useless settings are managed under the hood. How frequently do you actually change the sampling and scheduling algorithms or the weight_dtype? Basically never. No need to see it, it's now tucked away. I will re-release the full version of WAN Studio with all the settings exposed for you absolute nerds though under the name WAN Studio Pro. Expect that tonight/tomorrow.
 
 * Guess what? We now have a Video Preview node! Novel concept. You can generate videos all day without saving them, and only save the ones you want. Crazy right? I thought so too. It was actually quite a pain in the ass to make, considering how simple the functionality it, but the world is better with this node now in it. Enjoy.
 
