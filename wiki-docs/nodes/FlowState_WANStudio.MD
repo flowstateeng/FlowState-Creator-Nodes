@@ -1,4 +1,5 @@
-### [🌊🎬 FlowState WAN Studio](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_WANStudio.py)
+# 🌊🎬 FlowState WAN Studio
+
 An all-in-one studio for generating high-quality video using a dual-model WAN pipeline.
 
 A complete video generation pipeline that seamlessly combines:

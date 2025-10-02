@@ -1,4 +1,6 @@
-# 🎉 Releases - Current v1.0.0
+# 🎉 Releases
+
+# Current v1.0.1
 
 This page documents the major milestones and releases for the FlowState Creator Nodes project.
 

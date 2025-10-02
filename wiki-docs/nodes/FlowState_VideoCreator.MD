@@ -1,4 +1,5 @@
-### [🌊🎥 FlowState Video Creator](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_VideoCreator.py)
+# 🌊🎥 FlowState Video Creator
+
 A simple Create Video / Save Video combo node.
 
 I don't know why this isn't already a node.

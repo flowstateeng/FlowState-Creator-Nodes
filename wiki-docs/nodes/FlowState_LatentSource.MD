@@ -1,4 +1,5 @@
-### [🌊🌱 FlowState Latent Source](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_LatentSource.py)
+# 🌊🌱 FlowState Latent Source
+
 Simplify your latent options and clean up your workflow with FlowState Latent Source.
 
 A simple switch to select between:

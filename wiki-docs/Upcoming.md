@@ -1,18 +1,17 @@
 # 📆 Upcoming
 
----
+</br></br>
 
-## 🌊🚒 FlowState Flux Engine
+## 🌊🚒 FlowState Flux Engine Updates
 * Detail Daemon Integration
 
 ---
 
-## 🌊⚡ FlowState Quick Edit
-* Introduction of FlowState Quick Edit: a two-stage node that performs a rapid base edit and then applies a high-detail refinement pass to the result.
-
----
+</br></br>
 
 ## 🌊⚒️ FlowState Asset Forge
 * Introduction of FlowState Asset Forge: efficiently generate professional-grade image assets with maximum control & quality.
 
 ---
+
+</br></br>

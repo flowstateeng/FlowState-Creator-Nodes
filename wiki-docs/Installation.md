@@ -1,4 +1,4 @@
-## 💾 Installation
+# 💾 Installation
 
 ### Method 1.
 1. Open the ComfyUI Manager

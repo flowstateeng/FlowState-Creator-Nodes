@@ -1,4 +1,5 @@
-### [🌊🥗 FlowState Chef Ingredients](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_Chef_Ingredients.py)
+# 🌊🥗 FlowState Chef Ingredients
+
 The user-friendly input node for the FlowState Chef pipeline.
 
 - Prepare your recipe for the Chef. This node gathers and prepares all the necessary inputs:
@@ -7,7 +8,7 @@ The user-friendly input node for the FlowState Chef pipeline.
 - Bundles everything into a clean chef_ingredients package to simplify your workflow graph.
 
 <p align="center">
-<img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%2520Chef.png' alt='FS Chef Image'/>
+<img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Chef.png' alt='FS Chef Image'/>
 </p>
 
 **Inputs**

@@ -1,4 +1,5 @@
-### [🌊🚒 FlowState Flux Engine](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_FluxEngine.py)
+# 🌊🚒 FlowState Flux Engine
+
 Streamline your entire generation workflow with the FlowState Flux Engine.
 
 An all-in-one node that seamlessly combines:

@@ -1,4 +1,5 @@
-### [🌊👩🏻‍🍳 FlowState Chef](https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/FlowState_Chef.py)
+# 🌊👩🏻‍🍳 FlowState Chef
+
 The powerhouse of the Chef pipeline. This node executes a two-stage, instruction-based image editing and refinement workflow.
 
 - An all-in-one image editing pipeline that seamlessly combines:
@@ -8,7 +9,7 @@ The powerhouse of the Chef pipeline. This node executes a two-stage, instruction
 - Full control over both stages, including models, LoRAs, VAEs, samplers, and more.
 
 <p align="center">
-<img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%2520Chef.png' alt='FS Chef Image'/>
+<img width='650' src='https://github.com/flowstateeng/FlowState-Creator-Nodes/blob/main/imgs/FlowState%20Chef.png' alt='FS Chef Image'/>
 </p>
 
 **Inputs**
