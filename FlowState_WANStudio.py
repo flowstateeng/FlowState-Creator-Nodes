@@ -21,7 +21,7 @@ from .FlowState_Node import FlowState_Node
 ##
 # OUTSIDE IMPORTS
 ##
-import time, copy, math
+import time
 
 from nodes import UNETLoader
 from nodes import CLIPLoader
@@ -29,6 +29,7 @@ from nodes import VAELoader
 from nodes import CLIPTextEncode
 from nodes import LoraLoaderModelOnly
 from nodes import KSamplerAdvanced
+from nodes import VAEDecodeTiled
 
 from comfy_extras.nodes_wan import WanImageToVideo
 
@@ -40,10 +41,10 @@ class FlowState_WANStudio(FlowState_Node):
     DESCRIPTION = 'All-in-one WAN Video.'
     FUNCTION = 'execute'
     RETURN_TYPES = TYPE_WAN_STUDIO_OUT
-    RETURN_NAMES = ('image', 'latent', )
+    RETURN_NAMES = ('frames', 'latent', )
     OUTPUT_TOOLTIPS = (
-        'The image batch.',
-        'The latent batch.',
+        'The batch of image frames.',
+        'The batch of latent frames.',
     )
 
     def __init__(self):
@@ -113,6 +114,7 @@ class FlowState_WANStudio(FlowState_Node):
                 'sampling_algorithm': TYPE_SAMPLERS(),
                 'scheduling_algorithm': TYPE_SCHEDULERS(),
                 'steps': TYPE_STEPS,
+                'tiled_decode': TYPE_TILED_DECODE,
                 # PROMPT
                 'prompt_label': TYPE_FLOWSTATE_LABEL_PROMPT,
                 'pos_prompt': TYPE_PROMPT_WAN_STUDIO_POSITIVE,
@@ -186,6 +188,33 @@ class FlowState_WANStudio(FlowState_Node):
         self.pos_conditioning = pos
         self.neg_conditioning = neg
         self.latent_batch_in = latent
+
+    def handle_decoding(self):
+        self.print_status([
+            ('Decoding video...',),
+            ('Batch dimensions', self.stage_2_latent_batch_out['samples'].shape)
+        ])
+
+        decoding_start = time.time()
+
+        if self.sampling_params['tiled_decode'] == True:
+            self.print_status([('Using Tiled Decoding...',)])
+            self.video_batch_out = VAEDecodeTiled().decode(
+                self.working_vae,
+                self.stage_2_latent_batch_out,
+                tile_size=512,
+                overlap=64,
+                temporal_size=64,
+                temporal_overlap=8
+            )[0]
+        else:
+            self.video_batch_out = self.working_vae.decode(self.stage_2_latent_batch_out['samples'])[0]
+
+        decoding_duration, decoding_mins, decoding_secs = get_mins_and_secs(decoding_start)
+
+        self.print_status([
+            ('Decoding Time', f'{decoding_mins}m {decoding_secs}s ({decoding_duration})')
+        ])
 
     def handle_loading(self):
         high_noise_model = self.sampling_params['high_noise_model_name']
@@ -294,27 +323,11 @@ class FlowState_WANStudio(FlowState_Node):
             ('Sampling Stage Time', f'{sampling_mins}m {sampling_secs}s ({sampling_duration})')
         ])
 
-    def handle_decoding(self):
-        self.print_status([
-            ('Decoding video...',),
-            ('Batch dimensions', self.stage_2_latent_batch_out['samples'].shape)
-        ])
-
-        decoding_start = time.time()
-
-        self.video_batch_out = self.working_vae.decode(self.stage_2_latent_batch_out['samples'])[0]
-        
-        decoding_duration, decoding_mins, decoding_secs = get_mins_and_secs(decoding_start)
-
-        self.print_status([
-            ('Decoding Time', f'{decoding_mins}m {decoding_secs}s ({decoding_duration})')
-        ])
-
     def execute(
             self, model_label, high_noise_model_name, low_noise_model_name, weight_dtype, aumentation_label, sage_attention,
             high_noise_lora, low_noise_lora, style_lora, encoders_label, clip_name, vae_name, video_label, resolution,
             orientation, custom_width, custom_height, num_video_frames, sampling_label, seed, sampling_algorithm,
-            scheduling_algorithm, steps, prompt_label, pos_prompt, neg_prompt, starting_frame=None, clip_vision=None
+            scheduling_algorithm, steps, tiled_decode, prompt_label, pos_prompt, neg_prompt, starting_frame=None, clip_vision=None
         ):
 
         # PRINT SYSTEM STATUS

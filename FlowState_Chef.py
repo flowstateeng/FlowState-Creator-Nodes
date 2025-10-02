@@ -173,6 +173,7 @@ class FlowState_Chef(FlowState_Node):
                 'sampling_algorithm', 'scheduling_algorithm'
             ]
         }
+        check_params['flux'] += check_params['qwen']
 
         full_params = check_params[stage] + check_params['shared']
         changed_params = []
@@ -633,7 +634,7 @@ class FlowState_Chef(FlowState_Node):
                 temporal_overlap=8
             )[0]
         else:
-            self.flux_img_batch_out = self.flux_vae.decode(self.flux_latent_batch_out)
+            self.flux_img_batch_out = self.flux_vae.decode(self.flux_latent_batch_out['samples'])
 
     def run_stages(self):
         self.prepare_sampler_inputs()

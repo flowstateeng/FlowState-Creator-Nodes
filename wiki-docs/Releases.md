@@ -4,6 +4,14 @@ This page documents the major milestones and releases for the FlowState Creator 
 
 ---
 
+### 🤏 Minor Release - Small FlowState Chef & WAN Studio Updates
+**Date:** 2025-10-01
+* Added Tiled Decoding to WAN Studio to help the decoding bottleneck with larger videos.
+
+* Updated the Chef stage execution pipeline to make the loading a little more efficient.
+
+---
+
 ### 🔥 Major Release - 🌊👩🏻‍🍳 FlowState Chef & Chef Ingredients!
 **Date:** 2025-09-30
 Introducing the 🌊👩🏻‍🍳 FlowState Chef and 🌊🥗 FlowState Chef Ingredients nodes! This is a revolutionary two-stage pipeline designed for powerful, instruction-based image editing and refinement. It combines the advanced image editing capabilities of Qwen with the high-quality refinement of FLUX into a single, cohesive, and incredibly efficient workflow.
